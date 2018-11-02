@@ -197,7 +197,7 @@
 									<tr>
 										<td><%=p.getTitulo()%></td>
 										<td><%=p.getAno()%></td>
-										<td><%=p.getNivel()%></td>
+										<td><%=p.getNivel()//%></td>
 										<td><%=p.getAluno()%></td>
 										<td><%=p.getInstituicao()////%></td>
 										<td><%=p.getOrientador()%></td>
