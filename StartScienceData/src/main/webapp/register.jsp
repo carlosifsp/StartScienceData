@@ -55,7 +55,9 @@
 						
 					</div>
 
-					<div class="form-group">
+					<div class="form-row">
+					
+						<div class="col-md-6 mb-3">
 						
 							<input type="text" id="cpf"  name="cpf" value="" placeholder="CPF" class="form-control"
 								required="required"
@@ -63,38 +65,35 @@
 						
 					</div>
 					
-					<div class="form-group">
+					<div class="col-md-6 mb-3">
 						
 							<input type="text" id="data" name="data" value="" placeholder="Data de Nascimento" class="form-control"
 								required="required"
 								autofocus="autofocus">
 						
 					</div>
+					</div>
 					
-					<div class="form-group">
-							<div class="form-row">
-							<div class="col-md-5 mb-3">
+					<div class="form-row">
+					
+						<div class="col-md-6 mb-3">
+							<label for="validationCustom01">Nível</label>
+								<select name="nivel" class="form-control">
+									<option>Iniciação Cientifica</option>
+									<option>Mestrado</option>
+									<option>Doutorado</option>
+									<option>Pós-Doutorado</option>
+								</select>
+						</div>	
+						
+						<div class="col-md-6 mb-3">
 							<label for="validationCustom02">Universidade</label> 
 							<select name="universidade" class="form-control">
 									<option>IFSP</option>
 									<option>UNIFESP</option>
 								</select>
 						</div>
-						</div>
-								
 						
-							<div class="form-row">
-					
-						<div class="col-md-5 mb-3">
-							<label for="validationCustom01">Nível</label>
-								<select name="nivel" class="form-control">
-									<option>Iniciação Científica</option>
-									<option>Mestrado</option>
-									<option>Doutorado</option>
-									<option>Pós-Doutorado</option>
-								</select>
-						</div>	
-					</div>
 					</div>
 
 

@@ -58,7 +58,7 @@
         <li class="nav-item dropdown no-arrow mx-1">
           <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell fa-fw"></i>
-            <span class="badge badge-danger">9+</span>
+            <span class="badge badge-danger"></span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
             <a class="dropdown-item" href="#">Novidades</a>
@@ -70,7 +70,7 @@
         <li class="nav-item dropdown no-arrow mx-1">
           <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-envelope fa-fw"></i>
-            <span class="badge badge-danger">7</span>
+            <span class="badge badge-danger"></span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
             <a class="dropdown-item" href="#">Novas Mensagens</a>
@@ -129,7 +129,7 @@
         <li class="nav-item">
           <a class="nav-link" href="charts.jsp">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Graficos</span></a>
+            <span>Gráficos</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="tables.jsp">
@@ -154,16 +154,18 @@
           <h1>Cadastro de Instituições</h1>
           <hr>
           <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <div class="input-group">
+          
+        
           <input type="text" class="form-control" placeholder="Nome da Instituição" aria-label="Search" aria-describedby="basic-addon2">
-          <div class="input-group-append">
+          
 
-                      </div>
-        </div>
+                      
+                    
+      
 
         
         <button class="btn btn-primary" type="button" data-dismiss="modal">Cadastrar</button>
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Limpar</button>
+       
 
       </form>
 
@@ -174,7 +176,7 @@
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright Â© 2018</span>
+              <span>Copyright © 2018</span>
             </div>
           </div>
         </footer>
@@ -197,10 +199,10 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Pronto para sair?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">Ã—</span>
+              <span aria-hidden="true">X</span>
             </button>
           </div>
-          <div class="modal-body">Selecione "Logout" para encerrar a sessÃ£o.</div>
+          <div class="modal-body">Selecione "Logout" para encerrar a sessão.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
             <a class="btn btn-primary" href="login.jsp">Logout</a>

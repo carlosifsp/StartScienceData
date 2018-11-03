@@ -39,16 +39,18 @@
           </div>
           <form>
             <div class="form-group">
-              <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="EndereÃ§o de e-mail" required="required" autofocus="autofocus">
-                <label for="inputEmail">Entre com endereço de e-mail</label>
-              </div>
+              
+                <input type="email" id="inputEmail" name="email" value="" placeholder="E-mail"
+							class="form-control"
+								required="required" autofocus="autofocus" > 
+                
+              
             </div>
             <a class="btn btn-primary btn-block" href="login.html">Nova senha</a>
           </form>
           <div class="text-center">
-            <a class="d-block small mt-3" href="register.html">Registrar uma conta</a>
-            <a class="d-block small" href="login.html">Login</a>
+            <a class="d-block small mt-3" href="register.jsp">Registrar uma conta</a>
+            <a class="d-block small" href="login.jsp">Login</a>
           </div>
         </div>
       </div>

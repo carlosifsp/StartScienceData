@@ -65,7 +65,7 @@
 				class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
 				role="button" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <span
-					class="badge badge-danger">9+</span>
+					class="badge badge-danger"></span>
 			</a>
 				<div class="dropdown-menu dropdown-menu-right"
 					aria-labelledby="alertsDropdown">
@@ -78,7 +78,7 @@
 				class="nav-link dropdown-toggle" href="#" id="messagesDropdown"
 				role="button" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false"> <i class="fas fa-envelope fa-fw"></i> <span
-					class="badge badge-danger">7</span>
+					class="badge badge-danger"></span>
 			</a>
 				<div class="dropdown-menu dropdown-menu-right"
 					aria-labelledby="messagesDropdown">
@@ -131,7 +131,7 @@
 					<i class="fas fa-fw fa-chart-area"></i> <span>Instituições</span>
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="charts.jsp">
-					<i class="fas fa-fw fa-chart-area"></i> <span>Graficos</span>
+					<i class="fas fa-fw fa-chart-area"></i> <span>Gráficos</span>
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="tables.jsp">
 					<i class="fas fa-fw fa-table"></i> <span>Tabelas</span>
@@ -157,8 +157,8 @@
 					
 					<div class="form-row">
 					
-						<div class="col-md-4 mb-3">
-							<label for="validationCustom01">Titulo do Projeto</label> <input
+						<div class="col-md-8 mb-3">
+							<label for="validationCustom01">Título do Projeto</label> <input
 								type="text" class="form-control" id="validationCustom01"
 								name="titulo"  required>
 						</div>
@@ -173,7 +173,7 @@
 								name="ano"   required>
 						</div>
 						<div class="col-md-4 mb-3">
-							<label for="validationCustom02">Comite</label> <input
+							<label for="validationCustom02">Comitê de Ética</label> <input
 								type="text" class="form-control" id="validationCustom02"
 								name="comite"  required>
 						</div>
@@ -184,9 +184,9 @@
 					<div class="form-row">
 					
 						<div class="col-md-4 mb-3">
-							<label for="validationCustom01">Nivel</label>
+							<label for="validationCustom01">Nível</label>
 								<select name="nivel" class="form-control">
-									<option>Iniciação Cientifica</option>
+									<option>Iniciação Científica</option>
 									<option>Mestrado</option>
 									<option>Doutorado</option>
 									<option>Pós-Doutorado</option>
@@ -216,7 +216,7 @@
 			<footer class="sticky-footer">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<span>Copyright Â© 2018</span>
+						<span>Copyright © 2018</span>
 					</div>
 				</div>
 			</footer>
@@ -242,11 +242,11 @@
 						sair?</h5>
 					<button class="close" type="button" data-dismiss="modal"
 						aria-label="Close">
-						<span aria-hidden="true">Ã—</span>
+						<span aria-hidden="true">X—</span>
 					</button>
 				</div>
 				<div class="modal-body">Selecione "Logout" para encerrar a
-					sessÃ£o.</div>
+					sessão.</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancelar</button>
