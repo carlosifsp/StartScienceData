@@ -176,7 +176,6 @@
 										<th>Titulo</th>
 										<th>Ano</th>
 										<th>Nivel</th>
-										<th>Aluno</th>
 										<th>Instutição</th>
 										<th>Orientador</th>
 									</tr>
@@ -197,10 +196,9 @@
 									<tr>
 										<td><%=p.getTitulo()%></td>
 										<td><%=p.getAno()%></td>
-										<td><%=p.getNivel()//%></td>
-										<td><%=p.getAluno()%></td>
-										<td><%=p.getInstituicao()////%></td>
-										<td><%=p.getOrientador()%></td>
+										<td><%=p.getComite()%></td>
+										<td><%=p.getUniversidade()%></td>
+										<td><%=p.getNivel()%></td>
 									</tr>
 
 								</tbody>
