@@ -127,7 +127,7 @@
         <li class="nav-item">
           <a class="nav-link" href="charts.jsp">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Graficos</span></a>
+            <span>Gráficos</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="tables.jsp">

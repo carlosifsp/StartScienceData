@@ -109,20 +109,20 @@
             <span>Paginas</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <h6 class="dropdown-header">Tela de Login:</h6>
-            <a class="dropdown-item" href="login.jsp">Login</a>
-            <a class="dropdown-item" href="register.jsp">Registrar</a>
-            <a class="dropdown-item" href="forgot-password.jsp">Esqueceu a senha?</a>
+            <h6 class="dropdown-header">Dados dos Projetos:</h6>
+            <a class="dropdown-item" href="cadastroprojeto.jsp">Cadastrar</a>
+            <a class="dropdown-item" href="listar">Listar</a>
+            <a class="dropdown-item" href="alterar.jsp">Alterar</a>
             <div class="dropdown-divider"></div>
-            <h6 class="dropdown-header">Outras paginas:</h6>
-            <a class="dropdown-item" href="404.jsp">404 Page</a>
-            <a class="dropdown-item" href="blank.jsp">Blank Page</a>
+            <h6 class="dropdown-header">Consultas:</h6>
+            <a class="dropdown-item" href="professores.jsp">Professores</a>
+            <a class="dropdown-item" href="alunos.jsp">Alunos</a>
           </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="charts.jsp">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Gr√°ficos</span></a>
+            <span>Gr·ficos</span></a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="tables.jsp">
