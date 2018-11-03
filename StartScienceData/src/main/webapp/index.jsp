@@ -205,7 +205,7 @@
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-chart-area"></i>
-              Grafico de Area</div>
+              Gráfico de Área</div>
             <div class="card-body">
               <canvas id="myAreaChart" width="100%" height="30"></canvas>
             </div>
@@ -711,7 +711,7 @@
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright Â© 2018</span>
+              <span>Copyright © 2018</span>
             </div>
           </div>
         </footer>
@@ -734,10 +734,10 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Pronto para sair?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">Ã—</span>
+              <span aria-hidden="true">X—</span>
             </button>
           </div>
-          <div class="modal-body">Selecione "Logout" para encerrar a sessÃ£o.</div>
+          <div class="modal-body">Selecione "Logout" para encerrar a sessão.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
             <a class="btn btn-primary" href="login.jsp">Logout</a>
