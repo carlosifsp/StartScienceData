@@ -17,7 +17,7 @@
 <meta name="Brunno Lemes" name="Carlos Mario" name="Mateus Roncon"
 	content="">
 
-<title>SD Admin - Dashboard</title>
+<title>StartScienceDate</title>
 
 <!-- Bootstrap core CSS-->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

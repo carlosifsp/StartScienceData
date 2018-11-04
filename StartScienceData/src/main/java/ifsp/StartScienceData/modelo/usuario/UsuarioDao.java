@@ -15,7 +15,7 @@ public class UsuarioDao {
 	private ResultSet registros;
 	
 	
-	public String insereAluno(Usuario usuario) {
+	public String insereUsuario(Usuario usuario) {
 		cfgDao = new ConfigDao();
 
 		try {
@@ -26,12 +26,15 @@ public class UsuarioDao {
 
 				//INSERT INTO `usuario`  VALUES (NULL, 'Bruno Lemmes', 'Lemmes', 'bruno@gmail.com', '123456', '20/02/1983', '12345678925', '1', '1');
 
-				instrucaoSQL = "insert into projeto values(null, '"
+				instrucaoSQL = "insert into usuario values(null,'"
 						+usuario.getNome() + "','"
 								+ usuario.getSobreNome() + "','"
 										+ usuario.getEmail() + "',MD5('"
 												+ usuario.getSenha() +"'),'"
-														+ ")";
+														+ usuario.getData() + "','"
+																+ usuario.getCpf() + "','"
+																		+ usuario.getUniversidade() +"','"
+																				+ usuario.getNivel() + "')";
 															
 				comando = conexao.prepareStatement(instrucaoSQL);
 				comando.execute();

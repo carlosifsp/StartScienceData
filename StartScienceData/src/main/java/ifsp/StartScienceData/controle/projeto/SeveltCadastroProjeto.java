@@ -22,6 +22,10 @@ public class SeveltCadastroProjeto extends HttpServlet {
 	 * @author Carlos Mario, Bruno Lemmes, Matheus Roncon
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	UniversidadeDao dadosform = new UniversidadeDao();
+	
+	ArrayList<Universidade> lista = dadosform.consultaUniversidade();
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,19 +42,20 @@ public class SeveltCadastroProjeto extends HttpServlet {
 		projetoNovo.setAno(ano);
 		projetoNovo.setComite(comite);
 
-		projetoNovo.setNivel(2);
+		projetoNovo.setNivel(Integer.parseInt(nivel));
 
-		projetoNovo.setUniversidade(1);
+		projetoNovo.setUniversidade(Integer.parseInt(universidade));
+		
 
 		ProjetoDao bancoProjeto = new ProjetoDao();
 
 		System.out.println("Chegou aqui");
-		System.out.println(nivel);
+	
 		String erro = bancoProjeto.insereAluno(projetoNovo);
 		System.out.println(erro);
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("cadastroprojeto.jsp");
-
+		req.setAttribute("lista", lista);
 		dispatcher.forward(req, resp);
 
 		resp.setCharacterEncoding("UTF-8");
@@ -60,9 +65,7 @@ public class SeveltCadastroProjeto extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher dispatcher = req.getRequestDispatcher("cadastroprojeto.jsp");
 		
-		UniversidadeDao dadosform = new UniversidadeDao();
 		
-		ArrayList<Universidade> lista = dadosform.consultaUniversidade();
 		
 		
 		req.setAttribute("lista", lista);

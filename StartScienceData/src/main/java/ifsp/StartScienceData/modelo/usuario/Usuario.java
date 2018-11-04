@@ -1,6 +1,6 @@
 package ifsp.StartScienceData.modelo.usuario;
 
-import java.sql.Date;
+
 
 public class Usuario {
 	private int idUsuario;
@@ -8,10 +8,28 @@ public class Usuario {
 	private String sobreNome;
 	private String email;
 	private String senha;
-	private Date data;
+	private String data;
 	private String cpf;
 	private int universidade;
 	private int nivel;
+	
+	public Usuario() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Usuario(String nome,String sobreNome,String email,String senha,String data,String cpf, int universidade,int nivel) {
+		this.nome = nome;
+		this.sobreNome = sobreNome;
+		this.email = email;
+		this.senha = senha;
+		this.data = data;
+		this.cpf = cpf;
+		this.universidade = universidade;
+		this.nivel = nivel;
+	}
+	
+	
+	
 	public int getIdUsuario() {
 		return idUsuario;
 	}
@@ -42,10 +60,10 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 	public String getCpf() {

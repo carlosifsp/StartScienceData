@@ -37,7 +37,7 @@
 		<div class="card card-register mx-auto mt-5">
 			<div class="card-header">Registrar conta</div>
 			<div class="card-body">
-				<form>
+				<form method="post" action="registro">
 					<div class="form-group">
 
 						
@@ -60,7 +60,7 @@
 					
 						<div class="col-md-6 mb-3">
 						
-							<input type="text" id="cpf"  name="cpf" value="" placeholder="CPF" class="form-control"
+							<input type="number" id="cpf"  name="cpf" value="" placeholder="CPF" class="form-control"
 								required="required"
 								autofocus="autofocus">
 						
@@ -68,7 +68,7 @@
 					
 					<div class="col-md-6 mb-3">
 						
-							<input type="text" id="data" name="data" value="" placeholder="Data de Nascimento" class="form-control"
+							<input type="date" id="data" name="data" value="" placeholder="Data de Nascimento" class="form-control"
 								required="required"
 								autofocus="autofocus">
 						
@@ -126,7 +126,7 @@
 
 
 					</div>
-					<a class="btn btn-primary btn-block" href="login.jsp">Registrar</a>
+					<button name="registrarUsuario" class="btn btn-primary" type="submit" value="register">Salvar</button>
 				</form>
 				<div class="text-center">
 					<a class="d-block small mt-3" href="login.jsp">Login</a> <a
