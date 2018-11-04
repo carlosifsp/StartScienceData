@@ -126,7 +126,7 @@
 
 
 					</div>
-					<button name="registrarUsuario" class="btn btn-primary" type="submit" value="register">Salvar</button>
+					<button name="registrarUsuario" class="btn btn-primary btn-block" type="submit" value="register">Salvar</button>
 				</form>
 				<div class="text-center">
 					<a class="d-block small mt-3" href="login.jsp">Login</a> <a
