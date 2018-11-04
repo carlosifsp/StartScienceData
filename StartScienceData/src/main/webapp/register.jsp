@@ -1,5 +1,6 @@
 <%@page import="java.util.ArrayList"
-	import="ifsp.StartScienceData.modelo.projeto.Projeto"%>
+	import="ifsp.StartScienceData.modelo.projeto.Projeto" 
+	import="ifsp.StartScienceData.modelo.universidade.Universidade"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -16,7 +17,7 @@
 <meta name="Brunno Lemes" name="Carlos Mario" name="Mateus Roncon"
 	content="">
 
-<title>SD Admin - Registrar</title>
+<title>StartScienceDate</title>
 
 <!-- Bootstrap core CSS-->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -79,18 +80,29 @@
 						<div class="col-md-6 mb-3">
 							<label for="validationCustom01">Nível</label>
 								<select name="nivel" class="form-control">
-									<option>Iniciação Cientifica</option>
-									<option>Mestrado</option>
-									<option>Doutorado</option>
-									<option>Pós-Doutorado</option>
+									<option value="1">Iniciação Cientifica</option>
+									<option value="2">Mestrado</option>
+									<option value="3">Doutorado</option>
+									<option value="4">Pós-Doutorado</option>
 								</select>
 						</div>	
 						
 						<div class="col-md-6 mb-3">
 							<label for="validationCustom02">Universidade</label> 
 							<select name="universidade" class="form-control">
-									<option>IFSP</option>
-									<option>UNIFESP</option>
+									<%
+							ArrayList<Universidade> lista = (ArrayList<Universidade>) request.getAttribute("lista");
+
+							if(lista!=null){
+								for (Universidade u : lista) {
+							%>
+							
+							
+									<option value="<%=u.getIdUniversidade()%>"><%=u.getNomeUniversidade()%></option>
+									
+								
+								
+							<% } } %>	
 								</select>
 						</div>
 						

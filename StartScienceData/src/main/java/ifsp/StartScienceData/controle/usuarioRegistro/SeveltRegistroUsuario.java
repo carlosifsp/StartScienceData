@@ -1,4 +1,4 @@
-package ifsp.StartScienceData.controle;
+package ifsp.StartScienceData.controle.usuarioRegistro;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,29 +10,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ifsp.StartScienceData.modelo.projeto.Projeto;
-import ifsp.StartScienceData.modelo.projeto.ProjetoDao;
+import ifsp.StartScienceData.modelo.universidade.Universidade;
+import ifsp.StartScienceData.modelo.universidade.UniversidadeDao;
 
-@WebServlet(urlPatterns = { "/listar" })
-public class SeveltConsultaProjeto extends HttpServlet {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@WebServlet(urlPatterns = { "/registro" })
+public class SeveltRegistroUsuario extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("listar.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("register.jsp");
 
-		ProjetoDao consulta = new ProjetoDao();
+		UniversidadeDao dadosform = new UniversidadeDao();
 
-		ArrayList<Projeto> lista = consulta.consultaProjeto();
+		ArrayList<Universidade> lista = dadosform.consultaUniversidade();
 
 		req.setAttribute("lista", lista);
 
 		dispatcher.forward(req, resp);
+
 		resp.setCharacterEncoding("UTF-8");
 	}
-
 }

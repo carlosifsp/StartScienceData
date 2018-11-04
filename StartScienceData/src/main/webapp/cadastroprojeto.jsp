@@ -1,3 +1,4 @@
+<%@page import="ifsp.StartScienceData.modelo.universidade.Universidade"%>
 <%@page import="java.util.ArrayList"
 	import="ifsp.StartScienceData.modelo.projeto.Projeto"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -186,26 +187,37 @@
 						<div class="col-md-4 mb-3">
 							<label for="validationCustom01">Nível</label>
 								<select name="nivel" class="form-control">
-									<option>Iniciação Científica</option>
-									<option>Mestrado</option>
-									<option>Doutorado</option>
-									<option>Pós-Doutorado</option>
+									<option value="1">Iniciação Científica</option>
+									<option value="2">Mestrado</option>
+									<option value="3">Doutorado</option>
+									<option value="4">Pós-Doutorado</option>
 								</select>
 						</div>	
 						
 						<div class="col-md-4 mb-3">
 							<label for="validationCustom02">Universidade</label> 
 							<select name="universidade" class="form-control">
-									<option>IFSP</option>
-									<option>UNIFESP</option>
-								</select>
+							<%
+							ArrayList<Universidade> lista = (ArrayList<Universidade>) request.getAttribute("lista");
+
+							if(lista!=null){
+								for (Universidade u : lista) {
+							%>
+							
+							
+									<option value="<%=u.getIdUniversidade()%>"><%=u.getNomeUniversidade()%></option>
+									
+								
+								
+							<% } } %>		
+						</select>	
 						</div>
 						
 					</div>
 					
 				
 					
-					<button class="btn btn-primary" type="submit">Salvar</button>
+					<button name="salvar" class="btn btn-primary" type="submit" value="salvar">Salvar</button>
 				</form>
 
 

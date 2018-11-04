@@ -58,7 +58,7 @@
             <a class="btn btn-primary btn-block" href="index.jsp">Login</a>
           </form>
           <div class="text-center">
-            <a class="d-block small mt-3" href="register.jsp">Registrar Conta</a>
+            <a class="d-block small mt-3" href="registro">Registrar Conta</a>
             <a class="d-block small" href="forgot-password.jsp">Esqueceu a senha?</a>
           </div>
         </div>
