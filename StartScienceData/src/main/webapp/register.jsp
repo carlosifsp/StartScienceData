@@ -29,6 +29,25 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin.css" rel="stylesheet">
 
+<!--    //////////////////////////// CPF          -->
+
+<script>
+
+function formatar(mascara, documento){
+	  var i = documento.value.length;
+	  var saida = mascara.substring(0,1);
+	  var texto = mascara.substring(i)
+	  
+	  if (texto.substring(0,1) != saida){
+				documento.value += texto.substring(0,1);
+	  }
+	  
+
+	}
+	
+	</script>
+
+
 </head>
 
 <body class="bg-dark">
@@ -60,7 +79,7 @@
 					
 						<div class="col-md-6 mb-3">
 						
-							<input type="number" id="cpf"  name="cpf" value="" placeholder="CPF" class="form-control"
+							<input type="number" id="cpf"  name="cpf" value="" placeholder="CPF" maxlength="14" OnKeyPress="formatar('###.###.###-##', this);" class="form-control"
 								required="required"
 								autofocus="autofocus">
 						
