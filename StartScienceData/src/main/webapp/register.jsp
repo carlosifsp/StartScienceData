@@ -79,7 +79,7 @@ function formatar(mascara, documento){
 					
 						<div class="col-md-6 mb-3">
 						
-							<input type="number" id="cpf"  name="cpf" value="" placeholder="CPF" maxlength="14" OnKeyPress="formatar('###.###.###-##', this);" class="form-control"
+							<input type="text" id="cpf"  name="cpf" value="" placeholder="CPF" maxlength="14" OnKeyPress="formatar('###.###.###-##', this);" class="form-control"
 								required="required"
 								autofocus="autofocus">
 						
