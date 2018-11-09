@@ -15,7 +15,7 @@ public class ProjetoDao {
 	private PreparedStatement comando;
 	private ResultSet registros;
 
-	public String insereAluno(Projeto projeto) {
+	public String insereProjeto(Projeto projeto) {
 		cfgDao = new ConfigDao();
 
 		try {

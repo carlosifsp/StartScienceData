@@ -1,6 +1,7 @@
 
 <%@page import="java.util.ArrayList"
-	import="ifsp.StartScienceData.modelo.projeto.Projeto"%>
+	import="ifsp.StartScienceData.modelo.projeto.Projeto"
+	import="ifsp.StartScienceData.modelo.usuario.Usuario" %>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -15,7 +16,7 @@
     <meta name="Science Data" content="">
     <meta name="Brunno Lemes" name="Carlos Mario" name="Mateus Roncon" content="">
 
-    <title>SD Admin - Dashboard</title>
+    <title>StartScienceData</title>
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -84,12 +85,25 @@
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user-circle fa-fw"></i>
           </a>
+          <% 
+  		if(session.getAttribute("UserLogado")!=null){
+  		Usuario user = (Usuario) session.getAttribute("UserLogado");
+  		
+  		session.setAttribute("UserLogado", user);
+  	
+  	%>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
              <a class="dropdown-item" href="painel.jsp">Configurações</a>
             <a class="dropdown-item" href="#">Atividade</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
           </div>
+          
+     <%}else{
+        	  response.sendRedirect("login");
+          }
+       	
+       	%>
         </li>
       </ul>
 

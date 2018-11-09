@@ -49,10 +49,13 @@ public class SeveltCadastroProjeto extends HttpServlet {
 
 		ProjetoDao bancoProjeto = new ProjetoDao();
 
-		System.out.println("Chegou aqui");
 	
-		String erro = bancoProjeto.insereAluno(projetoNovo);
-		System.out.println(erro);
+		String erro = bancoProjeto.insereProjeto(projetoNovo);
+		
+		if(erro==null) {
+			String msg = "Projeto Cadastrado!";
+			req.setAttribute("mensagemCadastro", msg);
+		}
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("cadastroprojeto.jsp");
 		req.setAttribute("lista", lista);

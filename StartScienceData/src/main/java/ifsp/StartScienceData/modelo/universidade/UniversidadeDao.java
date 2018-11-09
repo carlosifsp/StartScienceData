@@ -9,6 +9,7 @@ import ifsp.StartScienceData.modelo.ConfigDao;
 
 
 
+
 public class UniversidadeDao {
 	private ConfigDao cfgDao;
 	private String instrucaoSQL;
@@ -16,6 +17,34 @@ public class UniversidadeDao {
 	private PreparedStatement comando;
 	private ResultSet registros;
 	
+	
+	public String insereUniversidade(Universidade universidade) {
+		cfgDao = new ConfigDao();
+
+		try {
+			String erro = cfgDao.conectaBD();
+
+			if (erro == null) {
+				conexao = cfgDao.getConexaoBD();
+
+				//INSERT INTO `projeto` VALUES (NULL, 'Teste', '123456', '2018', '1', NULL, NULL, '2');
+
+				instrucaoSQL = "insert into universidade values(NULL, '" + universidade.getNomeUniversidade() + "')";
+						
+
+				comando = conexao.prepareStatement(instrucaoSQL);
+				comando.execute();
+				cfgDao.desconectaBD();
+
+			} else
+				return erro;
+
+		} catch (Exception e) {
+			return "Tipo de Excessão: " + e.getClass().getSimpleName() + "\n *Mensagem: " + e.getMessage();
+		}
+
+		return null;
+	}
 	
 	
 	public ArrayList<Universidade> consultaUniversidade() {

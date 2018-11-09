@@ -1,5 +1,7 @@
+<%@page import="ifsp.StartScienceData.modelo.usuario.Usuario"%>
 <%@page import="java.util.ArrayList"
-	import="ifsp.StartScienceData.modelo.projeto.Projeto"%>
+	import="ifsp.StartScienceData.modelo.usuario.Usuario"
+	%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -14,7 +16,7 @@
     <meta name="Science Data" content="">
     <meta name="Brunno Lemes" name="Carlos Mario" name="Mateus Roncon" content="">
 
-    <title>SD Admin - Dashboard</title>
+    <title>StartScienceDate</title>
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,6 +33,20 @@
   </head>
 
   <body id="page-top">
+  
+  <% 
+  Usuario user = null;
+  	if(request.getAttribute("UserLogado")!=null){
+  		user = (Usuario) request.getAttribute("UserLogado");
+  	}else{
+  		if(session.getAttribute("UserLogado")!=null){
+  			user = (Usuario) session.getAttribute("UserLogado");
+  		}
+  	}
+  			
+  		
+  	
+  %>
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -82,12 +98,21 @@
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user-circle fa-fw"></i>
           </a>
+          <%
+          if(user!=null){
+          	session.setAttribute("UserLogado", user); 
+          %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="painel.jsp">Configurações</a>
-            <a class="dropdown-item" href="#">Atividade</a>
+            <a type="text" class="dropdown-item" disable><%=user.getNome()%></a>
+            <a class="dropdown-item" href="painel.jsp">Editar</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+            <a class="dropdown-item" href="login" data-toggle="modal" data-target="#logoutModal">Logout</a>
           </div>
+          <%}else{
+        	  response.sendRedirect("login");
+          }
+       	
+       	%>
         </li>
       </ul>
 
@@ -293,7 +318,7 @@
           <div class="modal-body">Selecione "Logout" para encerrar a sessão.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="login.jsp">Logout</a>
+            <a class="btn btn-primary" href="login">Logout</a>
           </div>
         </div>
       </div>

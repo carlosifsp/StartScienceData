@@ -15,7 +15,7 @@
     <meta name="Science Data" content="">
     <meta name="Brunno Lemes" name="Carlos Mario" name="Mateus Roncon" content="">
 
-    <title>SD Admin - Dashboard</title>
+    <title>StartScienceData</title>
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -32,6 +32,22 @@
   </head>
 
   <body id="page-top">
+  
+  	<!-- inicio do Aviso de Cadastro!-->
+	<%
+		if (request.getAttribute("mensagemCadastro") != null) {
+
+			String msg = (String) request.getAttribute("mensagemCadastro");
+	%>
+	
+	<div class="alert alert-success" role="alert">
+		<strong>Status: </strong> <%=msg%>
+	</div>
+
+
+	<%
+		}
+	%>
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -153,18 +169,16 @@
           <!-- Page Content -->
           <h1>Cadastro de Instituições</h1>
           <hr>
-          <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+          <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" method="post" action="cadastroUni">
           
         
-          <input type="text" class="form-control" placeholder="Nome da Instituição" aria-label="Search" aria-describedby="basic-addon2">
+          <input type="text" name="Nome" class="form-control" placeholder="Nome da Instituição" aria-label="Search" aria-describedby="basic-addon2">
           
 
                       
-                    
-      
-
+          
         
-        <button class="btn btn-primary" type="button" data-dismiss="modal">Cadastrar</button>
+        	<button class="btn btn-primary" type="submit" data-dismiss="modal">Cadastrar</button>
        
 
       </form>

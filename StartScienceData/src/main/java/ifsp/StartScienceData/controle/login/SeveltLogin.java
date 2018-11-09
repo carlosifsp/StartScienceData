@@ -50,6 +50,7 @@ public class SeveltLogin extends HttpServlet {
 
 		if (userTemp != null) {
 			if (userTemp.getSenha().equals(senhaDigitada)) {
+				req.setAttribute("UserLogado", userTemp);
 				mensagemAoUsuario = "login Ok!";
 				dispatcher = req.getRequestDispatcher("index.jsp");
 			} else {

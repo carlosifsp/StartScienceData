@@ -1,5 +1,6 @@
 <%@page import="java.util.ArrayList"
-	import="ifsp.StartScienceData.modelo.projeto.Projeto"%>
+	import="ifsp.StartScienceData.modelo.projeto.Projeto"
+	import="ifsp.StartScienceData.modelo.usuario.Usuario"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -91,7 +92,13 @@
 				class="nav-link dropdown-toggle" href="#" id="userDropdown"
 				role="button" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false"> <i class="fas fa-user-circle fa-fw"></i>
-			</a>
+			</a> 
+		<%if(session.getAttribute("UserLogado")!=null){
+	  		Usuario user = (Usuario) session.getAttribute("UserLogado");
+	  		
+	  		session.setAttribute("UserLogado", user);
+  	
+  		%>
 				<div class="dropdown-menu dropdown-menu-right"
 					aria-labelledby="userDropdown">
 					<a class="dropdown-item" href="painel.jsp">Configurações</a> <a
@@ -99,7 +106,14 @@
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#" data-toggle="modal"
 						data-target="#logoutModal">Logout</a>
-				</div></li>
+				</div>
+		<%}else{
+        	  response.sendRedirect("login");
+          }
+       	
+       	%>
+				
+				</li>
 		</ul>
 
 	</nav>
@@ -108,8 +122,8 @@
 
 		<!-- Sidebar -->
 		<ul class="sidebar navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="index.jsp">
-					<i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span>
+			<li class="nav-item"><a class="nav-link" href="index.jsp"> <i
+					class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span>
 			</a></li>
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" id="pagesDropdown"
@@ -118,13 +132,11 @@
 			</a>
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
 					<h6 class="dropdown-header">Dados dos Projetos:</h6>
-					<a class="dropdown-item" href="cadastroprojeto.jsp">Cadastrar</a>
-					<a class="dropdown-item" href="listar.jsp">Listar</a> <a
+					<a class="dropdown-item" href="cadastroProjeto">Cadastrar</a> <a
+						class="dropdown-item" href="listar">Listar</a> <a
 						class="dropdown-item" href="alterar.jsp">Alterar</a>
 					<div class="dropdown-divider"></div>
-					<h6 class="dropdown-header">Consultas:</h6>
-					<a class="dropdown-item" href="professores.jsp">Professores</a> <a
-						class="dropdown-item" href="alunos.jsp">Alunos</a>
+					
 				</div></li>
 			<li class="nav-item"><a class="nav-link" href="instituicao.jsp">
 					<i class="fas fa-fw fa-chart-area"></i> <span>Instituições</span>
@@ -175,13 +187,13 @@
 									<tr>
 										<th>Titulo</th>
 										<th>Ano</th>
-										<th>Nivel</th>
+										<th>Cômite</th>
 										<th>Instutição</th>
-										<th>Orientador</th>
+										<th>Nivel</th>
 									</tr>
 								</thead>
 
-<%
+								<%
 	
 	ArrayList<Projeto> lista = (ArrayList<Projeto>) request.getAttribute("lista");
 
@@ -203,7 +215,7 @@
 
 								</tbody>
 
-<%		}
+								<%		}
 	}
 %>
 

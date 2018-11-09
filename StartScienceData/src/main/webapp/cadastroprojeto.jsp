@@ -1,6 +1,8 @@
 <%@page import="ifsp.StartScienceData.modelo.universidade.Universidade"%>
 <%@page import="java.util.ArrayList"
-	import="ifsp.StartScienceData.modelo.projeto.Projeto"%>
+	import="ifsp.StartScienceData.modelo.projeto.Projeto"
+	import="ifsp.StartScienceData.modelo.usuario.Usuario"
+	%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -36,6 +38,31 @@
 </head>
 
 <body id="page-top">
+		<!-- inicio do Aviso de Cadastro!-->
+	<%
+		if (request.getAttribute("mensagemCadastro") != null) {
+
+			String msg = (String) request.getAttribute("mensagemCadastro");
+	%>
+	
+	<div class="alert alert-success" role="alert">
+		<strong>Status: </strong> <%=msg%>
+	</div>
+
+
+	<%
+		}
+	%>
+	
+	<!-- Fim do Aviso de Cadastro!-->
+
+	<% 
+  	if(session.getAttribute("UserLogado")!=null){
+  		Usuario user = (Usuario) session.getAttribute("UserLogado");
+  		
+  		session.setAttribute("UserLogado", user);
+  	
+  	%>
 
 	<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -94,6 +121,7 @@
 				role="button" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false"> <i class="fas fa-user-circle fa-fw"></i>
 			</a>
+			<% %>
 				<div class="dropdown-menu dropdown-menu-right"
 					aria-labelledby="userDropdown">
 					<a class="dropdown-item" href="painel.jsp">Configurações</a> <a
@@ -101,7 +129,13 @@
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#" data-toggle="modal"
 						data-target="#logoutModal">Logout</a>
-				</div></li>
+				</div>
+			<%}else{
+        	  response.sendRedirect("login");
+          }
+       	
+       	%>	
+			</li>
 		</ul>
 
 	</nav>
@@ -120,7 +154,7 @@
 			</a>
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
 					<h6 class="dropdown-header">Dados dos Projetos:</h6>
-					<a class="dropdown-item" href="cadastroprojeto.jsp">Cadastrar</a>
+					<a class="dropdown-item" href="cadastroProjeto">Cadastrar</a>
 					<a class="dropdown-item" href="listar">Listar</a> <a
 						class="dropdown-item" href="alterar.jsp">Alterar</a>
 					<div class="dropdown-divider"></div>
