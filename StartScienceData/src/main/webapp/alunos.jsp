@@ -84,7 +84,7 @@
             <i class="fas fa-user-circle fa-fw"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-             <a class="dropdown-item" href="painel.jsp">Configuraçõess</a>
+             <a class="dropdown-item" href="painel.jsp">Configurações</a>
             <a class="dropdown-item" href="#">Atividade</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
@@ -123,12 +123,12 @@
         <li class="nav-item">
           <a class="nav-link" href="instituicao.jsp">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>InstituiÃ§Ãµes</span></a>
+            <span>Instituições</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="charts.jsp">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>GrÃ¡ficos</span></a>
+            <span>Graficos</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="tables.jsp">
@@ -192,7 +192,7 @@
               <span aria-hidden="true">Ã—</span>
             </button>
           </div>
-          <div class="modal-body">Selecione "Logout" para encerrar a sessÃ£o.</div>
+          <div class="modal-body">Selecione "Logout" para encerrar a sessão.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
             <a class="btn btn-primary" href="login.jsp">Logout</a>
