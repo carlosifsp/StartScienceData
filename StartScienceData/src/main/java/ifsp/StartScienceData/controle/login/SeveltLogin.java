@@ -23,6 +23,7 @@ public class SeveltLogin extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 	RequestDispatcher dispatcher;
+	Usuario userTemp;
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -46,7 +47,7 @@ public class SeveltLogin extends HttpServlet {
 
 		UsuarioDao verificar = new UsuarioDao();
 
-		Usuario userTemp = verificar.verificarUsuario(email);
+		userTemp = verificar.verificarUsuario(email);
 
 		if (userTemp != null) {
 			if (userTemp.getSenha().equals(senhaDigitada)) {
@@ -70,6 +71,10 @@ public class SeveltLogin extends HttpServlet {
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		userTemp = null;
+		
+		req.setAttribute("UserLogado", userTemp);
 		
 		dispatcher = req.getRequestDispatcher("login.jsp");
 		dispatcher.forward(req, resp);

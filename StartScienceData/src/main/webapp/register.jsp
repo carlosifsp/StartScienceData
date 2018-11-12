@@ -148,9 +148,7 @@ function formatar(mascara, documento){
 					<button name="registrarUsuario" class="btn btn-primary btn-block" type="submit" value="register">Salvar</button>
 				</form>
 				<div class="text-center">
-					<a class="d-block small mt-3" href="login.jsp">Login</a> <a
-						class="d-block small" href="forgot-password.jsp">Esqueceu a
-						senha ?</a>
+					<a class="d-block small mt-3" href="login">Login</a> 
 				</div>
 			</div>
 		</div>

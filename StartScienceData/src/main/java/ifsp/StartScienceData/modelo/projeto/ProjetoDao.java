@@ -94,8 +94,6 @@ public class ProjetoDao {
 		} catch (Exception e) {
 			projetos = null;
 		}
-		if(projetos==null)
-			System.out.println("é null");
 		return projetos;
 	}
 

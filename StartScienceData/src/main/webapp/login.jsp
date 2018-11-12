@@ -45,6 +45,8 @@
 
 	<%
 		}
+	
+	session.setAttribute("UserLogado", null); 
 	%>
 	<div class="container">
 		<div class="card card-login mx-auto mt-5">
@@ -70,9 +72,7 @@
 					<button class="btn btn-primary btn-block" type="submit">Login</button>
 				</form>
 				<div class="text-center">
-					<a class="d-block small mt-3" href="registro">Registrar Conta</a> <a
-						class="d-block small" href="forgot-password.jsp">Esqueceu a
-						senha?</a>
+					<a class="d-block small mt-3" href="registro">Registrar Conta</a>
 				</div>
 			</div>
 		</div>

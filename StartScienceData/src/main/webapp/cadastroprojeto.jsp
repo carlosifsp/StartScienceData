@@ -89,33 +89,7 @@
 
 		<!-- Navbar -->
 		<ul class="navbar-nav ml-auto ml-md-0">
-			<li class="nav-item dropdown no-arrow mx-1"><a
-				class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
-				role="button" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <span
-					class="badge badge-danger"></span>
-			</a>
-				<div class="dropdown-menu dropdown-menu-right"
-					aria-labelledby="alertsDropdown">
-					<a class="dropdown-item" href="#">Novidades</a>
-					<!--<a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div> --></li>
-			<li class="nav-item dropdown no-arrow mx-1"><a
-				class="nav-link dropdown-toggle" href="#" id="messagesDropdown"
-				role="button" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false"> <i class="fas fa-envelope fa-fw"></i> <span
-					class="badge badge-danger"></span>
-			</a>
-				<div class="dropdown-menu dropdown-menu-right"
-					aria-labelledby="messagesDropdown">
-					<a class="dropdown-item" href="#">Novas Mensagens</a> <a
-						class="dropdown-item" href="#">Mensagens</a>
-					<!--<div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>-->
-				</div></li>
+			
 			<li class="nav-item dropdown no-arrow"><a
 				class="nav-link dropdown-toggle" href="#" id="userDropdown"
 				role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -124,8 +98,8 @@
 			<% %>
 				<div class="dropdown-menu dropdown-menu-right"
 					aria-labelledby="userDropdown">
-					<a class="dropdown-item" href="painel.jsp">Configurações</a> <a
-						class="dropdown-item" href="#">Atividade</a>
+					<a type="text" class="dropdown-item" disable><%=user.getNome()%></a>
+            		<a class="dropdown-item" href="painel?user=<%=user.getEmail()%>">Editar</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#" data-toggle="modal"
 						data-target="#logoutModal">Logout</a>
@@ -155,22 +129,14 @@
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
 					<h6 class="dropdown-header">Dados dos Projetos:</h6>
 					<a class="dropdown-item" href="cadastroProjeto">Cadastrar</a>
-					<a class="dropdown-item" href="listar">Listar</a> <a
-						class="dropdown-item" href="alterar.jsp">Alterar</a>
-					<div class="dropdown-divider"></div>
-					<h6 class="dropdown-header">Consultas:</h6>
-					<a class="dropdown-item" href="professores.jsp">Professores</a> <a
-						class="dropdown-item" href="alunos.jsp">Alunos</a>
-				</div></li>
+					<a class="dropdown-item" href="listar">Listar</a> 
+					<a class="dropdown-item" href="alterar.jsp">Alterar</a>
+				 </li>
 			<li class="nav-item"><a class="nav-link" href="instituicao.jsp">
 					<i class="fas fa-fw fa-chart-area"></i> <span>Instituições</span>
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href="charts.jsp">
-					<i class="fas fa-fw fa-chart-area"></i> <span>Gráficos</span>
-			</a></li>
-			<li class="nav-item"><a class="nav-link" href="tables.jsp">
-					<i class="fas fa-fw fa-table"></i> <span>Tabelas</span>
-			</a></li>
+			
+			
 		</ul>
 
 		<div id="content-wrapper">

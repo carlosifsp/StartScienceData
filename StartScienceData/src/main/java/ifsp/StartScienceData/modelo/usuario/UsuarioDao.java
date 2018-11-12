@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import ifsp.StartScienceData.modelo.ConfigDao;
-import ifsp.StartScienceData.modelo.projeto.Projeto;
+
 
 public class UsuarioDao {
 	private ConfigDao cfgDao;
@@ -82,9 +82,90 @@ public class UsuarioDao {
 		} catch (Exception e) {
 			usuario = null;
 		}
-		if (usuario == null)
-			System.out.println("é null");
 		return usuario;
+	}
+	
+	public Usuario dadosUsuario(String email) {
+		cfgDao = new ConfigDao();
+
+		Usuario usuario = new Usuario();
+
+		try {
+			String erro = cfgDao.conectaBD();
+			if (erro == null) {
+				conexao = cfgDao.getConexaoBD();
+				instrucaoSQL = "SELECT * FROM `usuario` WHERE email = '" + email + "'";
+				comando = conexao.prepareStatement(instrucaoSQL);
+
+				registros = comando.executeQuery();
+				if (registros.next()) {
+					//registros.beforeFirst();
+					
+					String email1 = registros.getString("Email");
+					String nome =  registros.getString("Nome");
+					String sobrenome =  registros.getString("Sobrenome");
+					String data =  registros.getString("DataNascimento");
+					String cpf =  registros.getString("CPF");
+					int universidade = Integer.parseInt(registros.getString("Universidade_idUniversidade"));
+					int nivel = Integer.parseInt(registros.getString("Nivel_idNivel"));
+
+					usuario = new Usuario();
+					
+					usuario.setEmail(email1);
+					usuario.setNome(nome);
+					usuario.setSobreNome(sobrenome);
+					usuario.setData(data);
+					usuario.setCpf(cpf);
+					usuario.setUniversidade(universidade);
+					usuario.setNivel(nivel);
+					
+					
+
+				}else {
+					usuario = null;
+				}
+				cfgDao.desconectaBD();
+
+			} else
+				usuario = null;
+
+		} catch (Exception e) {
+			usuario = null;
+		}
+		return usuario;
+	}
+
+	public String atualizaUsuario(Usuario usuario) {
+		cfgDao = new ConfigDao();
+
+		try {
+			String erro = cfgDao.conectaBD();
+
+			if (erro == null) {
+				conexao = cfgDao.getConexaoBD();
+
+				
+
+				instrucaoSQL = "update usuario set Nome = '" + usuario.getNome() + "', Sobrenome = '"
+						+ usuario.getSobreNome() + "', DataNascimento = '"
+								+usuario.getData()+ "', Universidade_idUniversidade ='"
+									+ usuario.getUniversidade()	+ "', Nivel_idNivel = '"
+										+ usuario.getNivel() + "' WHERE Email = '"
+											+usuario.getEmail()	+ "'";	
+				
+				System.out.println(instrucaoSQL);
+				comando = conexao.prepareStatement(instrucaoSQL);
+				comando.execute();
+				cfgDao.desconectaBD();
+
+			} else
+				return erro;
+
+		} catch (Exception e) {
+			return "Tipo de Excessão: " + e.getClass().getSimpleName() + "\n *Mensagem: " + e.getMessage();
+		}
+		System.out.println("null");
+		return null;
 	}
 
 }

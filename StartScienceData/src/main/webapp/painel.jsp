@@ -31,6 +31,28 @@
 <link href="css/sb-admin.css" rel="stylesheet">
 
 <!--    //////////////////////////// CPF          -->
+<% 
+  Usuario user1 = null;
+  	if(request.getAttribute("UserLogado")!=null){
+  		user1 = (Usuario) request.getAttribute("UserLogado");
+  	}else{
+  		if(session.getAttribute("UserLogado")!=null){
+  			user1 = (Usuario) session.getAttribute("UserLogado");
+  		}
+  	}
+  
+ 
+    if(user1!=null){
+    	session.setAttribute("UserLogado", user1); 
+    
+    }else{
+  	  response.sendRedirect("login");
+    }
+%>
+  		
+  	
+
+
 
 <script>
 
@@ -53,16 +75,38 @@ function formatar(mascara, documento){
 
 <body class="bg-dark">
 
+<%
+	Usuario user = new Usuario();
+	if(request.getAttribute("user")!=null){
+		user = (Usuario) request.getAttribute("user");
+	}else{
+		response.sendRedirect("index.jsp");
+	}
+
+
+%>
+
 	<div class="container">
 		<div class="card card-register mx-auto mt-5">
 			<div class="card-header">Alterar conta</div>
 			<div class="card-body">
-				<form method="post" action="registro">
+				<form method="post" action="painel">
 					<div class="form-group">
 
 						
+						<div class="form-group">
 						
-							<input type="text" id="firstName" name="nome" value="<%= request.getParameter("nome") %>" placeholder="Nome" class="form-control"
+							<input type="hidden" id="inputEmail" name="email" value="<%=user.getEmail()%>" placeholder="E-mail"
+							class="form-control"
+								required="required">
+						
+							<input type="email" id="inputEmail"  value="<%=user.getEmail()%>" placeholder="E-mail"
+							class="form-control"
+								required="required" disabled="disabled""> 
+						
+							</div>
+						
+							<input type="text" id="firstName" name="nome" value="<%=user.getNome()%>" placeholder="Nome" class="form-control"
 								required="required"
 								autofocus="autofocus">
 
@@ -71,7 +115,7 @@ function formatar(mascara, documento){
 
 					<div class="form-group">
 						
-							<input type="text" id="secondName"  name="sobrenome" value="<%= request.getParameter("sobrenome") %>" placeholder="Sobrenome" class="form-control"
+							<input type="text" id="secondName"  name="sobrenome" value="<%=user.getSobreNome()%>" placeholder="Sobrenome" class="form-control"
 								 required="required"
 								autofocus="autofocus">
 						
@@ -81,15 +125,15 @@ function formatar(mascara, documento){
 					
 						<div class="col-md-6 mb-3">
 						
-							<input type="text" id="cpf"  name="cpf" value="<%= request.getParameter("cpf") %>" placeholder="CPF" maxlength="14" OnKeyPress="formatar('###.###.###-##', this);" class="form-control"
+							<input type="text" id="cpf"  name="cpf" value="<%=user.getCpf()%>" placeholder="CPF" maxlength="14" OnKeyPress="formatar('###.###.###-##', this);" class="form-control"
 								required="required"
-								autofocus="autofocus">
+								autofocus="autofocus" disabled="disabled">
 						
 					</div>
 					
 					<div class="col-md-6 mb-3">
 						
-							<input type="date" id="data" name="data" value="<%= request.getParameter("data") %>" placeholder="Data de Nascimento" class="form-control"
+							<input type="date" id="data" name="data" value="<%=user.getData()%>" placeholder="Data de Nascimento" class="form-control"
 								required="required"
 								autofocus="autofocus">
 						
@@ -98,10 +142,29 @@ function formatar(mascara, documento){
 					
 					<div class="form-row">
 					
+						<%
+						String nivel = "";
+						switch(user.getNivel()){
+						case 1:
+							nivel = "Iniciação Cientifica";
+							break;
+						case 2:
+							nivel = "Mestrado";
+							break;
+						case 3:
+							nivel = "Doutorado";
+							break;
+						case 4:
+							nivel = "Pós-Doutorado";
+							break;
+						}
+						
+						%>
+					
 						<div class="col-md-6 mb-3">
 							<label for="validationCustom01">Nível</label>
 								<select name="nivel" class="form-control">
-								<option value="0"><%= request.getParameter("nivel") %></option>
+									<option value="<%=user.getNivel()%>"><%=nivel%> </option>
 									<option value="1">Iniciação Cientifica</option>
 									<option value="2">Mestrado</option>
 									<option value="3">Doutorado</option>
@@ -112,17 +175,17 @@ function formatar(mascara, documento){
 						<div class="col-md-6 mb-3">
 							<label for="validationCustom02">Universidade</label> 
 							<select name="universidade" class="form-control">
-									<%
+							<%
 							ArrayList<Universidade> lista = (ArrayList<Universidade>) request.getAttribute("lista");
 
 							if(lista!=null){
 								for (Universidade u : lista) {
-							%>
-							
-									<option value="0"><%= request.getParameter("universidade") %></option>
+									if(u.getIdUniversidade()==user.getUniversidade()){
+									%>
+										<option value="<%=u.getIdUniversidade()%>" selected="selected"> <%=u.getNomeUniversidade()%></option>
+									<%continue;} %>
+	
 									<option value="<%=u.getIdUniversidade()%>"><%=u.getNomeUniversidade()%></option>
-									
-								
 								
 							<% } } %>	
 								</select>
@@ -131,30 +194,9 @@ function formatar(mascara, documento){
 					</div>
 
 
-					<div class="form-group">
-						
-							<input type="email" id="inputEmail" name="email" value="<%= request.getParameter("email") %>" placeholder="E-mail"
-							class="form-control"
-								required="required" > 
-						
-					</div>
-
-					<div class="form-group">
-						
-							<input type="password" id="inputPassword" name= "senha" value="<%= request.getParameter("senha") %>" placeholder="Senha"
-							class="form-control"
-							required="required">
-						
-
-
-					</div>
 					<button name="registrarUsuario" class="btn btn-primary btn-block" type="submit" value="register">Salvar</button>
 				</form>
-				<div class="text-center">
-					<a class="d-block small mt-3" href="login.jsp">Login</a> <a
-						class="d-block small" href="forgot-password.jsp">Esqueceu a
-						senha ?</a>
-				</div>
+
 			</div>
 		</div>
 	</div>

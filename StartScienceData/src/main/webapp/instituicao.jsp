@@ -1,5 +1,7 @@
+<%@page import="ifsp.StartScienceData.modelo.usuario.Usuario"%>
 <%@page import="java.util.ArrayList"
-	import="ifsp.StartScienceData.modelo.projeto.Projeto"%>
+	import="ifsp.StartScienceData.modelo.usuario.Usuario"
+	%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -31,6 +33,19 @@
   </head>
 
   <body id="page-top">
+    <% 
+  	Usuario user = null;
+  	if(request.getAttribute("UserLogado")!=null){
+  		user = (Usuario) request.getAttribute("UserLogado");
+  	}else{
+  		if(session.getAttribute("UserLogado")!=null){
+  			user = (Usuario) session.getAttribute("UserLogado");
+  		}
+  	}
+  			
+  		
+  	
+  %>
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -54,41 +69,25 @@
 
       <!-- Navbar -->
       <ul class="navbar-nav ml-auto ml-md-0">
-        <li class="nav-item dropdown no-arrow mx-1">
-          <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-bell fa-fw"></i>
-            <span class="badge badge-danger">9+</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-            <a class="dropdown-item" href="#">Novidades</a>
-            <!--<a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div> -->
-        </li>
-        <li class="nav-item dropdown no-arrow mx-1">
-          <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-envelope fa-fw"></i>
-            <span class="badge badge-danger">7</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-            <a class="dropdown-item" href="#">Novas Mensagens</a>
-            <a class="dropdown-item" href="#">Mensagens</a>
-            <!--<div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>-->
-          </div>
-        </li>
+        
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user-circle fa-fw"></i>
-          </a>
+          </a>  <%
+          if(user!=null){
+          	session.setAttribute("UserLogado", user); 
+          %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-             <a class="dropdown-item" href="painel.jsp">Configurações</a>
-            <a class="dropdown-item" href="#">Atividade</a>
+            <a type="text" class="dropdown-item" disable><%=user.getNome()%></a>
+            <a class="dropdown-item" href="painel?user=<%=user.getEmail()%>">Editar</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+            <a class="dropdown-item" href="login" data-toggle="modal" data-target="#logoutModal">Logout</a>
           </div>
+          <%}else{
+        	  response.sendRedirect("login");
+          }
+       	
+       	%>
         </li>
       </ul>
 
@@ -115,9 +114,7 @@
             <a class="dropdown-item" href="listar.jsp">Listar</a>
             <a class="dropdown-item" href="alterar.jsp">Alterar</a>
             <div class="dropdown-divider"></div>
-            <h6 class="dropdown-header">Consultas:</h6>
-            <a class="dropdown-item" href="professores.jsp">Professores</a>
-            <a class="dropdown-item" href="alunos.jsp">Alunos</a>
+
           </div>
         </li>
         <li class="nav-item">
@@ -125,16 +122,8 @@
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Instituições</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="charts.jsp">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Graficos</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="tables.jsp">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tabelas</span></a>
-        </li>
+ 
+    
       </ul>
 
       <div id="content-wrapper">
