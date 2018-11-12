@@ -1,8 +1,11 @@
+<%@page import="ifsp.StartScienceData.modelo.universidade.Universidade"%>
 <%@page import="java.util.ArrayList"
 	import="ifsp.StartScienceData.modelo.projeto.Projeto"
-	import="ifsp.StartScienceData.modelo.usuario.Usuario"%>
+	import="ifsp.StartScienceData.modelo.usuario.Usuario"
+	%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -35,6 +38,31 @@
 </head>
 
 <body id="page-top">
+		<!-- inicio do Aviso de Cadastro!-->
+	<%
+		if (request.getAttribute("mensagemCadastro") != null) {
+
+			String msg = (String) request.getAttribute("mensagemCadastro");
+	%>
+	
+	<div class="alert alert-success" role="alert">
+		<strong>Status: </strong> <%=msg%>
+	</div>
+
+
+	<%
+		}
+	%>
+	
+	<!-- Fim do Aviso de Cadastro!-->
+
+	<% 
+  	if(session.getAttribute("UserLogado")!=null){
+  		Usuario user = (Usuario) session.getAttribute("UserLogado");
+  		
+  		session.setAttribute("UserLogado", user);
+  	
+  	%>
 
 	<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -66,13 +94,8 @@
 				class="nav-link dropdown-toggle" href="#" id="userDropdown"
 				role="button" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false"> <i class="fas fa-user-circle fa-fw"></i>
-			</a> 
-		<%if(session.getAttribute("UserLogado")!=null){
-	  		Usuario user = (Usuario) session.getAttribute("UserLogado");
-	  		
-	  		session.setAttribute("UserLogado", user);
-  	
-  		%>
+			</a>
+			<% %>
 				<div class="dropdown-menu dropdown-menu-right"
 					aria-labelledby="userDropdown">
 					<a type="text" class="dropdown-item" disable><%=user.getNome()%></a>
@@ -81,13 +104,12 @@
 					<a class="dropdown-item" href="#" data-toggle="modal"
 						data-target="#logoutModal">Logout</a>
 				</div>
-		<%}else{
+			<%}else{
         	  response.sendRedirect("login");
           }
        	
-       	%>
-				
-				</li>
+       	%>	
+			</li>
 		</ul>
 
 	</nav>
@@ -96,8 +118,8 @@
 
 		<!-- Sidebar -->
 		<ul class="sidebar navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="index.jsp"> <i
-					class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span>
+			<li class="nav-item"><a class="nav-link" href="index.jsp">
+					<i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span>
 			</a></li>
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" id="pagesDropdown"
@@ -106,15 +128,14 @@
 			</a>
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
 					<h6 class="dropdown-header">Dados dos Projetos:</h6>
-					<a class="dropdown-item" href="cadastroProjeto">Cadastrar</a> <a
-						class="dropdown-item" href="listar">Listar</a> <a
-						class="dropdown-item" href="alterar.jsp">Alterar</a>
-					<div class="dropdown-divider"></div>
-					
-				</div></li>
+					<a class="dropdown-item" href="cadastroProjeto">Cadastrar</a>
+					<a class="dropdown-item" href="listar">Listar</a> 
+					<a class="dropdown-item" href="alterar.jsp">Alterar</a>
+				 </li>
 			<li class="nav-item"><a class="nav-link" href="instituicao.jsp">
 					<i class="fas fa-fw fa-chart-area"></i> <span>Instituições</span>
 			</a></li>
+			
 			
 		</ul>
 
@@ -126,76 +147,69 @@
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.jsp">Dashboard</a>
 					</li>
-					<li class="breadcrumb-item active">Listar Projetos</li>
+					<li class="breadcrumb-item active">Cadastrar Animais</li>
 				</ol>
 
 				<!-- Page Content -->
-				<h1>Lista de Projetos</h1>
+				<h1>Cadastro de Animais</h1>
 				<hr>
 
-				<button class="btn btn-secondary" type="button" data-dismiss="modal">Listar
-					por Nome</button>
-				<button class="btn btn-secondary" type="button" data-dismiss="modal">Listar
-					por Ano</button>
-			
-
-
-				
-				<div class="card mb-3">
-					<div class="card-header">
-						<i class="fas fa-table"></i> Tabela de Projetos
+				<form class="needs-validation" action="cadastro" method="post" novalidate>
+					
+					<div class="form-row">
+						
+						<div class="col-md-4 mb-3">
+							<label for="validationCustom02">ID</label> <input
+								type="text" class="form-control" id="validationCustom02"
+								name="Idade"   required>
+						</div>
+						<div class="col-md-4 mb-3">
+							<label for="validationCustom01">Especie</label> <input
+								type="text" class="form-control" id="validationCustom01"
+								name="Especie"  required>
+						</div>
+						
+						
+						
 					</div>
-					<div class="card-body">
-						<div class="table-responsive">
-							<table class="table table-bordered" id="dataTable" width="100%"
-								cellspacing="0">
-								<thead>
-									<tr>
-										<th>Título</th>
-										<th>Ano</th>
-										<th>Comitê</th>
-										<th>Instutição</th>
-										<th>Nível</th>
-									</tr>
-								</thead>
-
-								<%
-	
-	ArrayList<Projeto> lista = (ArrayList<Projeto>) request.getAttribute("lista");
-
-	if(lista!=null){
-		for (Projeto p : lista) {
-	
-
-%>
-
-
-								<tbody>
-									<tr>
-										<td><%=p.getTitulo()%></td>
-										<td><%=p.getAno()%></td>
-										<td><%=p.getComite()%></td>
-										<td><%=p.getUniversidade()%></td>
-										<td><%=p.getNivel()%></td>
-									</tr>
-
-								</tbody>
-
-								<%		}
-	}
-%>
-
-
-
-							</table>
+					
+					<div class="form-row">
+					
+					<div class="col-md-4 mb-3">
+							<label for="validationCustom02">Semanas</label> <input
+								type="text" class="form-control" id="validationCustom02"
+								name="Idade"   required>
+						</div>
+					
+						<div class="col-md-4 mb-3">
+							<label for="validationCustom02">Gênero</label> <input
+								type="text" class="form-control" id="validationCustom02"
+								name="Genero"  required>
 						</div>
 					</div>
-					<div class="card-footer small text-muted">Atualizado</div>
-				</div>
+					
+					<div class="form-row">
+					
+						<div class="col-md-4 mb-3">
+							<label for="validationCustom02">Uso de drogas?</label> <input
+								type="text" class="form-control" id="validationCustom02"
+								name="Drogas"  required>
+						</div>
+							<div class="col-md-4 mb-3">
+							<label for="validationCustom02">Exercicio Físico?</label> <input
+								type="text" class="form-control" id="validationCustom02"
+								name="Exercicio"  required>
+						</div>
+					</div>
+					
+					
+				
+					
+					<button name="salvar" class="btn btn-primary" type="submit" value="salvar">Salvar</button>
+				</form>
+
 
 			</div>
-
-
 			<!-- /.container-fluid -->
 
 			<!-- Sticky Footer -->
@@ -228,7 +242,7 @@
 						sair?</h5>
 					<button class="close" type="button" data-dismiss="modal"
 						aria-label="Close">
-						<span aria-hidden="true">×</span>
+						<span aria-hidden="true">X—</span>
 					</button>
 				</div>
 				<div class="modal-body">Selecione "Logout" para encerrar a

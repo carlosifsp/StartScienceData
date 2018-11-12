@@ -132,20 +132,73 @@
           <h1>Alteração de Projetos</h1>
           <hr>
           
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Mostrar Projetos</button>
-      
-     
-        
-      </form>
+    
+			
 
-        </div>
+
+				
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fas fa-table"></i> Tabela de Projetos
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-bordered" id="dataTable" width="100%"
+								cellspacing="0">
+								<thead>
+									<tr>
+										<th>Título</th>
+										<th>Ano</th>
+										<th>Comitê</th>
+										<th>Instutição</th>
+										<th>Nível</th>
+									</tr>
+								</thead>
+
+								<%
+	
+	ArrayList<Projeto> lista = (ArrayList<Projeto>) request.getAttribute("lista");
+
+	if(lista!=null){
+		for (Projeto p : lista) {
+	
+
+%>
+
+
+								<tbody>
+									<tr>
+										<td><%=p.getTitulo()%></td>
+										<td><%=p.getAno()%></td>
+										<td><%=p.getComite()%></td>
+										<td><%=p.getUniversidade()%></td>
+										<td><%=p.getNivel()%></td>
+									</tr>
+
+								</tbody>
+
+								<%		}
+	}
+%>
+
+
+							</table>
+						</div>
+					</div>
+					<div class="card-footer small text-muted">Atualizado</div>
+				</div>
+
+			</div>
+      
+
+      
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright Â© 2018</span>
+              <span>Copyright © 2018</span>
             </div>
           </div>
         </footer>
@@ -168,7 +221,7 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Pronto para sair?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">Ã—</span>
+              <span aria-hidden="true">X</span>
             </button>
           </div>
           <div class="modal-body">Selecione "Logout" para encerrar a sessão.</div>
