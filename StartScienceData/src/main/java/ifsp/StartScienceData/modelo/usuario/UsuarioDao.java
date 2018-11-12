@@ -30,7 +30,7 @@ public class UsuarioDao {
 						+ "','" + usuario.getEmail() + "',MD5('" + usuario.getSenha() + "'),'" + usuario.getData()
 						+ "','" + usuario.getCpf() + "','" + usuario.getUniversidade() + "','" + usuario.getNivel()
 						+ "')";
-
+				
 				comando = conexao.prepareStatement(instrucaoSQL);
 				comando.execute();
 				cfgDao.desconectaBD();
