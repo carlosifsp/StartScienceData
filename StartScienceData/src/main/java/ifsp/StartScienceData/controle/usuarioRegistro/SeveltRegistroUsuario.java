@@ -22,7 +22,9 @@ public class SeveltRegistroUsuario extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	UniversidadeDao dadosform = new UniversidadeDao();
 
+	ArrayList<Universidade> lista = dadosform.consultaUniversidade();
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher dispatcher;
@@ -35,7 +37,10 @@ public class SeveltRegistroUsuario extends HttpServlet {
 		String universidade = req.getParameter("universidade");
 		String email = req.getParameter("email");
 		String senha = req.getParameter("senha");
-
+		
+		 cpf = cpf.replace(".", "");
+		
+		 cpf = cpf.replace("-", "");
 		
 		Usuario user = new Usuario(nome, sobrenome, email, senha, data, cpf, Integer.parseInt(universidade), Integer.parseInt(nivel));
 		
@@ -52,8 +57,8 @@ public class SeveltRegistroUsuario extends HttpServlet {
 			dispatcher = req.getRequestDispatcher("register.jsp");
 		}
 		
-		System.out.println(erro);
-		
+	
+		req.setAttribute("lista", lista);
 		dispatcher.forward(req, resp);
 		resp.setCharacterEncoding("UTF-8");
 		
@@ -63,9 +68,7 @@ public class SeveltRegistroUsuario extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher dispatcher = req.getRequestDispatcher("register.jsp");
 
-		UniversidadeDao dadosform = new UniversidadeDao();
-
-		ArrayList<Universidade> lista = dadosform.consultaUniversidade();
+	
 
 		req.setAttribute("lista", lista);
 
