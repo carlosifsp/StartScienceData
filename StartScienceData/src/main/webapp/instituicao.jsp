@@ -1,3 +1,4 @@
+<%@page import="ifsp.StartScienceData.modelo.universidade.Universidade"%>
 <%@page import="ifsp.StartScienceData.modelo.usuario.Usuario"%>
 <%@page import="java.util.ArrayList"
 	import="ifsp.StartScienceData.modelo.usuario.Usuario"
@@ -118,7 +119,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="instituicao.jsp">
+          <a class="nav-link" href="instituicao">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Instituições</span></a>
         </li>
@@ -142,12 +143,65 @@
           <h1>Instituições<br></h1>
           <hr>
           
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Listar</button>
-         <a class="btn btn-primary" href="cadastroinstituicao.jsp">Cadastrar</a>
-      
-     
         
-      </form>
+         <a class="btn btn-primary" href="cadastroinstituicao.jsp">Cadastrar</a>
+      	<br>
+      	<br>
+     	
+     	<div class="card mb-3">
+					<div class="card-header">
+						<i class="fas fa-table"></i> Tabela de Projetos
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-bordered" id="dataTable" width="100%"
+								cellspacing="0">
+								<thead>
+									<tr>
+								
+										
+										
+										<th>Instutição</th>
+										
+									</tr>
+								</thead>
+
+								<%
+	
+	ArrayList<Universidade> lista = (ArrayList<Universidade>) request.getAttribute("lista");
+
+	if(lista!=null){
+		for (Universidade u : lista) {
+	
+
+%>
+
+
+								<tbody>
+									<tr>
+								
+										<td><%=u.getNomeUniversidade()%></td>
+										
+										
+									</tr>
+
+								</tbody>
+
+								<%		}
+	}
+%>
+
+
+
+							</table>
+						</div>
+					</div>
+					<div class="card-footer small text-muted">Atualizado</div>
+				</div>
+
+			</div>
+        	
+    
 
         </div>
         <!-- /.container-fluid -->

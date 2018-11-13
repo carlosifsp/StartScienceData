@@ -132,7 +132,7 @@
 					<a class="dropdown-item" href="listar">Listar</a> 
 					<a class="dropdown-item" href="alterar.jsp">Alterar</a>
 				 </li>
-			<li class="nav-item"><a class="nav-link" href="instituicao.jsp">
+			<li class="nav-item"><a class="nav-link" href="instituicao">
 					<i class="fas fa-fw fa-chart-area"></i> <span>Instituições</span>
 			</a></li>
 			

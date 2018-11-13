@@ -112,7 +112,7 @@
 					<div class="dropdown-divider"></div>
 					
 				</div></li>
-			<li class="nav-item"><a class="nav-link" href="instituicao.jsp">
+			<li class="nav-item"><a class="nav-link" href="instituicao">
 					<i class="fas fa-fw fa-chart-area"></i> <span>Instituições</span>
 			</a></li>
 			
