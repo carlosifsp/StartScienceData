@@ -14,6 +14,8 @@ import ifsp.StartScienceData.modelo.projeto.Projeto;
 import ifsp.StartScienceData.modelo.projeto.ProjetoDao;
 import ifsp.StartScienceData.modelo.universidade.Universidade;
 import ifsp.StartScienceData.modelo.universidade.UniversidadeDao;
+import ifsp.StartScienceData.modelo.usuario.Usuario;
+import ifsp.StartScienceData.modelo.usuario.UsuarioDao;
 
 @WebServlet(urlPatterns = { "/cadastro", "/cadastroProjeto" })
 public class SeveltCadastroProjeto extends HttpServlet {
@@ -35,12 +37,21 @@ public class SeveltCadastroProjeto extends HttpServlet {
 		String comite = req.getParameter("comite");
 		String nivel = req.getParameter("nivel");
 		String universidade = req.getParameter("universidade");
+		String emailUsuario = req.getParameter("emailUsuario");
+		
+		
+		UsuarioDao verificar = new UsuarioDao();
 
+		Usuario userTemp = verificar.verificarUsuario(emailUsuario);
+		
+
+		
 		Projeto projetoNovo = new Projeto();
 
 		projetoNovo.setTitulo(titulo);
 		projetoNovo.setAno(ano);
 		projetoNovo.setComite(comite);
+		projetoNovo.setIdUsuario(userTemp.getIdUsuario());
 
 		projetoNovo.setNivel(Integer.parseInt(nivel));
 

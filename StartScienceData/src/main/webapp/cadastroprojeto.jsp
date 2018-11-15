@@ -57,8 +57,9 @@
 	<!-- Fim do Aviso de Cadastro!-->
 
 	<% 
+	Usuario user = null;
   	if(session.getAttribute("UserLogado")!=null){
-  		Usuario user = (Usuario) session.getAttribute("UserLogado");
+  		 user = (Usuario) session.getAttribute("UserLogado");
   		
   		session.setAttribute("UserLogado", user);
   	
@@ -130,7 +131,9 @@
 					<h6 class="dropdown-header">Dados dos Projetos:</h6>
 					<a class="dropdown-item" href="cadastroProjeto">Cadastrar</a>
 					<a class="dropdown-item" href="listar">Listar</a> 
-					<a class="dropdown-item" href="alterar.jsp">Alterar</a>
+					<%if(user!=null){ %>
+            <a class="dropdown-item" href="alterar?user=<%=user.getEmail()%>">Alterar</a>
+            <%} %>
 				 </li>
 			<li class="nav-item"><a class="nav-link" href="instituicao">
 					<i class="fas fa-fw fa-chart-area"></i> <span>Instituições</span>
@@ -155,6 +158,9 @@
 				<hr>
 
 				<form class="needs-validation" action="cadastro" method="post" novalidate>
+					
+					<input type="hidden" class="form-control" id="validationCustom01"
+								name="emailUsuario" value="<%=user.getEmail()%>">
 					
 					<div class="form-row">
 					

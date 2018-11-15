@@ -54,7 +54,7 @@ public class UsuarioDao {
 			String erro = cfgDao.conectaBD();
 			if (erro == null) {
 				conexao = cfgDao.getConexaoBD();
-				instrucaoSQL = "SELECT `Senha`, `Email`, `Nome` FROM `usuario` WHERE email = '" + email + "'";
+				instrucaoSQL = "SELECT `Senha`, `idUsuario`,  `Email`, `Nome` FROM `usuario` WHERE email = '" + email + "'";
 				comando = conexao.prepareStatement(instrucaoSQL);
 
 				registros = comando.executeQuery();
@@ -64,12 +64,14 @@ public class UsuarioDao {
 					String email1 = registros.getString("Email");
 					String senha = registros.getString("Senha");
 					String nome =  registros.getString("Nome");
+					int idUsuario = Integer.parseInt(registros.getString("idUsuario"));
 
 					usuario = new Usuario();
 					
 					usuario.setEmail(email1);
 					usuario.setSenha(senha);
 					usuario.setNome(nome);
+					usuario.setIdUsuario(idUsuario);
 
 				}else {
 					usuario = null;

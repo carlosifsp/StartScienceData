@@ -1,3 +1,4 @@
+<%@page import="org.omg.PortableInterceptor.USER_EXCEPTION"%>
 <%@page import="java.util.ArrayList"
 	import="ifsp.StartScienceData.modelo.projeto.Projeto"
 	import="ifsp.StartScienceData.modelo.usuario.Usuario"%>
@@ -67,8 +68,10 @@
 				role="button" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false"> <i class="fas fa-user-circle fa-fw"></i>
 			</a> 
-		<%if(session.getAttribute("UserLogado")!=null){
-	  		Usuario user = (Usuario) session.getAttribute("UserLogado");
+		<%
+		Usuario user = null;
+		if(session.getAttribute("UserLogado")!=null){
+	  		 user = (Usuario) session.getAttribute("UserLogado");
 	  		
 	  		session.setAttribute("UserLogado", user);
   	
@@ -107,8 +110,10 @@
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
 					<h6 class="dropdown-header">Dados dos Projetos:</h6>
 					<a class="dropdown-item" href="cadastroProjeto">Cadastrar</a> <a
-						class="dropdown-item" href="listar">Listar</a> <a
-						class="dropdown-item" href="alterar.jsp">Alterar</a>
+						class="dropdown-item" href="listar">Listar</a>
+					<%if(user!=null){ %>
+            <a class="dropdown-item" href="alterar?user=<%=user.getEmail()%>">Alterar</a>
+            <%} %>
 					<div class="dropdown-divider"></div>
 					
 				</div></li>

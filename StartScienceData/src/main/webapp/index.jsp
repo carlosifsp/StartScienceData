@@ -35,12 +35,15 @@
   <body id="page-top">
   
   <% 
-  Usuario user = null;
+	Usuario user = null;
   	if(request.getAttribute("UserLogado")!=null){
-  		user = (Usuario) request.getAttribute("UserLogado");
+  		 user = (Usuario) request.getAttribute("UserLogado");
+
+  		
   	}else{
   		if(session.getAttribute("UserLogado")!=null){
   			user = (Usuario) session.getAttribute("UserLogado");
+
   		}
   	}
   			
@@ -114,7 +117,9 @@
             <h6 class="dropdown-header">Dados dos Projetos:</h6>
             <a class="dropdown-item" href="cadastroProjeto">Cadastrar</a>
             <a class="dropdown-item" href="listar">Listar</a>
-            <a class="dropdown-item" href="alterar.jsp">Alterar</a>
+            <%if(user!=null){ %>
+            <a class="dropdown-item" href="alterar?user=<%=user.getEmail()%>">Alterar</a>
+            <%} %>
             <div class="dropdown-divider"></div>
           </div>
         </li>

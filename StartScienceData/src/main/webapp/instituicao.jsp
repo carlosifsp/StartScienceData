@@ -111,9 +111,11 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <h6 class="dropdown-header">Dados dos Projetos:</h6>
-            <a class="dropdown-item" href="cadastroprojeto.jsp">Cadastrar</a>
-            <a class="dropdown-item" href="listar.jsp">Listar</a>
-            <a class="dropdown-item" href="alterar.jsp">Alterar</a>
+            <a class="dropdown-item" href="cadastro">Cadastrar</a>
+            <a class="dropdown-item" href="listar">Listar</a>
+            <%if(user!=null){ %>
+            <a class="dropdown-item" href="alterar?user=<%=user.getEmail()%>">Alterar</a>
+            <%} %>
             <div class="dropdown-divider"></div>
 
           </div>

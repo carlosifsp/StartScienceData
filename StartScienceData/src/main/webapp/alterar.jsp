@@ -63,8 +63,9 @@
             <i class="fas fa-user-circle fa-fw"></i>
           </a>
           <% 
+          Usuario user = null;
   		if(session.getAttribute("UserLogado")!=null){
-  		Usuario user = (Usuario) session.getAttribute("UserLogado");
+  		 user = (Usuario) session.getAttribute("UserLogado");
   		
   		session.setAttribute("UserLogado", user);
   	
@@ -105,7 +106,9 @@
             <h6 class="dropdown-header">Dados dos Projetos:</h6>
             <a class="dropdown-item" href="cadastroProjeto">Cadastrar</a>
             <a class="dropdown-item" href="listar">Listar</a>
-            <a class="dropdown-item" href="alterar.jsp">Alterar</a>
+            <%if(user!=null){ %>
+            <a class="dropdown-item" href="alterar?user=<%=user.getEmail()%>">Alterar</a>
+            <%} %>
             <div class="dropdown-divider"></div>
           </div>
         </li>
@@ -136,7 +139,6 @@
 			
 
 
-				
 				<div class="card mb-3">
 					<div class="card-header">
 						<i class="fas fa-table"></i> Tabela de Projetos
@@ -180,6 +182,7 @@
 								<%		}
 	}
 %>
+
 
 
 							</table>

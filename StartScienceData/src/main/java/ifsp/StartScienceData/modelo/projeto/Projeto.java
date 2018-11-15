@@ -7,12 +7,31 @@ public class Projeto {
 	private String comite;
 	private int nivel;
 	private int universidade;
+	private int IdUsuario;
 
 	
 	
 	
 
 	
+	public int getIdUsuario() {
+		return IdUsuario;
+	}
+
+
+
+
+
+
+	public void setIdUsuario(int idUsuario) {
+		IdUsuario = idUsuario;
+	}
+
+
+
+
+
+
 	public int getId() {
 		return id;
 	}
