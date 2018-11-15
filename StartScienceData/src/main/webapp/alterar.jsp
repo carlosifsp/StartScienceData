@@ -1,4 +1,5 @@
 
+<%@page import="ifsp.StartScienceData.modelo.universidade.Universidade"%>
 <%@page import="java.util.ArrayList"
 	import="ifsp.StartScienceData.modelo.projeto.Projeto"
 	import="ifsp.StartScienceData.modelo.usuario.Usuario" %>
@@ -29,6 +30,24 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
+    
+    <script>
+	function confirmaExclusao(codigo) {   
+  		
+	
+   		var senha=prompt("Digite sua senha:");
+   		
+   		var url = "alterarExcluir?id=" + codigo + "pass=" + senha;
+    
+	    if (confirm("Tem certeza que deseja excluir o registro?")) { 
+	    	location.href=url;
+	    }
+  
+   
+   
+   }
+
+</script>
 
   </head>
 
@@ -154,6 +173,7 @@
 										<th>Comitê</th>
 										<th>Instutição</th>
 										<th>Nível</th>
+										<th>Ações</th>
 									</tr>
 								</thead>
 
@@ -163,8 +183,34 @@
 
 	if(lista!=null){
 		for (Projeto p : lista) {
+			
 	
-
+			String nivel = "";
+			switch(p.getNivel()){
+			case 1:
+				nivel = "Iniciação Cientifica";
+				break;
+			case 2:
+				nivel = "Mestrado";
+				break;
+			case 3:
+				nivel = "Doutorado";
+				break;
+			case 4:
+				nivel = "Pós-Doutorado";
+				break;
+			}
+			
+			String uni = "";
+			ArrayList<Universidade> listaUni = (ArrayList<Universidade>) request.getAttribute("listaUni");
+			
+			if(listaUni!=null){
+				for (Universidade u : listaUni) {
+					if(u.getIdUniversidade()==p.getUniversidade()){
+						uni =  u.getNomeUniversidade();
+					}
+				}
+			}
 %>
 
 
@@ -173,8 +219,12 @@
 										<td><%=p.getTitulo()%></td>
 										<td><%=p.getAno()%></td>
 										<td><%=p.getComite()%></td>
-										<td><%=p.getUniversidade()%></td>
-										<td><%=p.getNivel()%></td>
+										<td><%=uni%></td>
+										<td><%=nivel%></td>
+										<td>
+											<a type="button" onClick="return confirmaExclusao(<%=p.getId()%>);"  class="btn btn-danger">Apagar</a> 
+											<a type="button" class="btn btn-warning">Editar</a>
+										</td>
 									</tr>
 
 								</tbody>

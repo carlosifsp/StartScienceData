@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import ifsp.StartScienceData.modelo.projeto.Projeto;
 import ifsp.StartScienceData.modelo.projeto.ProjetoDao;
+import ifsp.StartScienceData.modelo.universidade.Universidade;
+import ifsp.StartScienceData.modelo.universidade.UniversidadeDao;
 import ifsp.StartScienceData.modelo.usuario.Usuario;
 import ifsp.StartScienceData.modelo.usuario.UsuarioDao;
 
@@ -38,6 +40,11 @@ public class SeveltAlterarProjeto  extends HttpServlet{
 		ProjetoDao consulta = new ProjetoDao();
 
 		ArrayList<Projeto> listaEdit = consulta.consultaProjetoEditar(userTemp.getIdUsuario());
+		
+		UniversidadeDao dadosform = new UniversidadeDao();
+		
+		ArrayList<Universidade> listaUni = dadosform.consultaUniversidade();
+		req.setAttribute("listaUni", listaUni);
 
 		req.setAttribute("lista", listaEdit);
 

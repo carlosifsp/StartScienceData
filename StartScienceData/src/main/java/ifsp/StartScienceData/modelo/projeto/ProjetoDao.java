@@ -30,7 +30,7 @@ public class ProjetoDao {
 						+ "','" + projeto.getComite() + "','" +
 						projeto.getAno() + "','"+
 						projeto.getUniversidade() + "', null,'" + projeto.getIdUsuario() + "','"
-						 + projeto.getNivel() +"')";
+						 + projeto.getNivel() +"', null)";
 
 				comando = conexao.prepareStatement(instrucaoSQL);
 				comando.execute();
@@ -68,22 +68,23 @@ public class ProjetoDao {
 						String titulo = registros.getString("Titulo");
 						String ano = registros.getString("Ano");
 						String comite = registros.getString("Comite");
-						//Integer nivel = Integer.parseInt(registros.getString("Nivel_idNivel"));
-						//Integer universidade = Integer.parseInt(registros.getString("Universidade_idUniversidade"));
+						int nivel = Integer.parseInt(registros.getString("Nivel_idNivel"));
+						int universidade = Integer.parseInt(registros.getString("Universidade_idUniversidade"));
+						int ativo = Integer.parseInt(registros.getString("ativo"));
 						
-
-						projeto = new Projeto();
-						
-						projeto.setId(idProjeto);
-						projeto.setTitulo(titulo);
-						projeto.setAno(ano);
-						projeto.setComite(comite);
-						projeto.setNivel(1);
-						projeto.setUniversidade(2);
-
-
-						projetos.add(projeto);
-
+						if(ativo==1) {
+							projeto = new Projeto();
+							
+							projeto.setId(idProjeto);
+							projeto.setTitulo(titulo);
+							projeto.setAno(ano);
+							projeto.setComite(comite);
+							projeto.setNivel(nivel);
+							projeto.setUniversidade(universidade);
+	
+	
+							projetos.add(projeto);
+						}
 					}
 				}
 				cfgDao.desconectaBD();
@@ -119,21 +120,23 @@ public class ProjetoDao {
 						String titulo = registros.getString("Titulo");
 						String ano = registros.getString("Ano");
 						String comite = registros.getString("Comite");
-						//Integer nivel = Integer.parseInt(registros.getString("Nivel_idNivel"));
-						//Integer universidade = Integer.parseInt(registros.getString("Universidade_idUniversidade"));
+						int nivel = Integer.parseInt(registros.getString("Nivel_idNivel"));
+						int universidade = Integer.parseInt(registros.getString("Universidade_idUniversidade"));
+						int ativo = Integer.parseInt(registros.getString("ativo"));
 						
-
-						projeto = new Projeto();
-						
-						projeto.setId(idProjeto);
-						projeto.setTitulo(titulo);
-						projeto.setAno(ano);
-						projeto.setComite(comite);
-						projeto.setNivel(1);
-						projeto.setUniversidade(2);
-
-
-						projetos.add(projeto);
+						if(ativo==1) {
+							projeto = new Projeto();
+							
+							projeto.setId(idProjeto);
+							projeto.setTitulo(titulo);
+							projeto.setAno(ano);
+							projeto.setComite(comite);
+							projeto.setNivel(nivel);
+							projeto.setUniversidade(universidade);
+	
+	
+							projetos.add(projeto);
+						}
 
 					}
 				}

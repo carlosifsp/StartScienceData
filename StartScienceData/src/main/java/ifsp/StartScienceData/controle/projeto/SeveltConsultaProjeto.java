@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import ifsp.StartScienceData.modelo.projeto.Projeto;
 import ifsp.StartScienceData.modelo.projeto.ProjetoDao;
+import ifsp.StartScienceData.modelo.universidade.Universidade;
+import ifsp.StartScienceData.modelo.universidade.UniversidadeDao;
 
 @WebServlet(urlPatterns = { "/listar" })
 public class SeveltConsultaProjeto extends HttpServlet {
@@ -28,8 +30,16 @@ public class SeveltConsultaProjeto extends HttpServlet {
 		ProjetoDao consulta = new ProjetoDao();
 
 		ArrayList<Projeto> lista = consulta.consultaProjeto();
-
+		
+		
+		UniversidadeDao dadosform = new UniversidadeDao();
+		
+		ArrayList<Universidade> listaUni = dadosform.consultaUniversidade();
+		req.setAttribute("listaUni", listaUni);
+		
+		
 		req.setAttribute("lista", lista);
+		
 
 		dispatcher.forward(req, resp);
 		resp.setCharacterEncoding("UTF-8");
