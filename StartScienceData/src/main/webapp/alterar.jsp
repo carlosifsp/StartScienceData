@@ -31,15 +31,15 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
     
+    <link href="estilo.css" rel="stylesheet">
+    
     <script>
 	function confirmaExclusao(codigo) {   
   		
-	
-   		var senha=prompt("Digite sua senha:");
    		
-   		var url = "alterarExcluir?id=" + codigo + "pass=" + senha;
+   		var url = "alterarExcluir?id=" + codigo;
     
-	    if (confirm("Tem certeza que deseja excluir o registro?")) { 
+	    if (confirm("Tem certeza que deseja excluir o projeto?")) { 
 	    	location.href=url;
 	    }
   
@@ -150,13 +150,33 @@
             <li class="breadcrumb-item active">Alterar Projetos</li>
           </ol>
 
+			<%
+			if (request.getAttribute("msg") != null) {
+
+			String msg = (String) request.getAttribute("msg");
+			%>
+	
+			<div class="alert alert-success" role="alert">
+		 	<%=msg%>
+			</div>
+
+	
+		<%
+		}
+		%>	
+
+
           <!-- Page Content -->
           <h1>Alteração de Projetos</h1>
           <hr>
-          
-    
+          	
+          	<a id="butaoAddAnimal" type="button" href="#"  class="btn btn-secondary" >Editar Animal</a>
+    		<a id="butaoAddAnimal" type="button" href="inseriranimal.jsp"  class="btn btn-info" >Adicionar Animal</a>
+    		
 			
-
+			<br>
+				<br>
+					<br>
 
 				<div class="card mb-3">
 					<div class="card-header">

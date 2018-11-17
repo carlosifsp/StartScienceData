@@ -64,7 +64,10 @@ public class SeveltCadastroProjeto extends HttpServlet {
 		String erro = bancoProjeto.insereProjeto(projetoNovo);
 		
 		if(erro==null) {
-			String msg = "Projeto Cadastrado!";
+			int msg = 1;
+			req.setAttribute("mensagemCadastro", msg);
+		}else {
+			int msg = 0;
 			req.setAttribute("mensagemCadastro", msg);
 		}
 
@@ -79,15 +82,13 @@ public class SeveltCadastroProjeto extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher dispatcher = req.getRequestDispatcher("cadastroprojeto.jsp");
 		
-		
-		
+	
 		
 		req.setAttribute("lista", lista);
-		
-
 		dispatcher.forward(req, resp);
-
 		resp.setCharacterEncoding("UTF-8");
+		
+		
 	}
 
 }

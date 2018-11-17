@@ -39,20 +39,7 @@
 
 <body id="page-top">
 		<!-- inicio do Aviso de Cadastro!-->
-	<%
-		if (request.getAttribute("mensagemCadastro") != null) {
-
-			String msg = (String) request.getAttribute("mensagemCadastro");
-	%>
 	
-	<div class="alert alert-success" role="alert">
-		<strong>Status: </strong> <%=msg%>
-	</div>
-
-
-	<%
-		}
-	%>
 	
 	<!-- Fim do Aviso de Cadastro!-->
 
@@ -105,9 +92,7 @@
 					<a class="dropdown-item" href="#" data-toggle="modal"
 						data-target="#logoutModal">Logout</a>
 				</div>
-			<%}else{
-        	  response.sendRedirect("login");
-          }
+			<%
        	
        	%>	
 			</li>
@@ -122,6 +107,9 @@
 			<li class="nav-item"><a class="nav-link" href="index.jsp">
 					<i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span>
 			</a></li>
+			
+			
+			
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" id="pagesDropdown"
 				role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -152,6 +140,31 @@
 					</li>
 					<li class="breadcrumb-item active">Cadastrar Projeto</li>
 				</ol>
+				<%
+					if (request.getAttribute("mensagemCadastro") != null) {
+
+						int msg = (Integer) request.getAttribute("mensagemCadastro");
+						
+						if(msg==1){
+				%>
+
+				<div class="alert alert-success" role="alert">
+					<strong>Status: Cadastrado Com Sucesso </strong>
+				</div>
+
+
+				<%
+					}else{
+				
+				%>
+				<div class="alert alert-warning" role="alert">
+					<strong>Status: Não foi possivel Cadastrar! </strong>
+				</div>
+				<%
+					}
+					}
+			
+				%>
 
 				<!-- Page Content -->
 				<h1>Cadastro de Projetos</h1>
@@ -283,7 +296,11 @@
 
 	<!-- Custom scripts for all pages-->
 	<script src="js/sb-admin.min.js"></script>
-
+	<%}else{
+  	  response.sendRedirect("login");
+    }
+	
+	%>
 </body>
 
 </html>

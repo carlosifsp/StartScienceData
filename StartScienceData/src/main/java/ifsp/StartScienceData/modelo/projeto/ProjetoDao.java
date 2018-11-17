@@ -30,7 +30,7 @@ public class ProjetoDao {
 						+ "','" + projeto.getComite() + "','" +
 						projeto.getAno() + "','"+
 						projeto.getUniversidade() + "', null,'" + projeto.getIdUsuario() + "','"
-						 + projeto.getNivel() +"', null)";
+						 + projeto.getNivel() +"', '1')";
 
 				comando = conexao.prepareStatement(instrucaoSQL);
 				comando.execute();
@@ -93,6 +93,7 @@ public class ProjetoDao {
 				projetos = null;
 
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			projetos = null;
 		}
 		return projetos;
@@ -151,4 +152,67 @@ public class ProjetoDao {
 		return projetos;
 	}
 
+	public String deletarProjeto(int idProjeto) {
+		cfgDao = new ConfigDao();
+
+		try {
+			String erro = cfgDao.conectaBD();
+
+			if (erro == null) {
+				conexao = cfgDao.getConexaoBD();
+				
+
+				instrucaoSQL = "UPDATE `projeto` SET `ativo` = '0' WHERE `projeto`.`idProjeto` ='"+ idProjeto + "'";
+
+				comando = conexao.prepareStatement(instrucaoSQL);
+				comando.execute();
+				cfgDao.desconectaBD();
+
+			} else
+				return erro;
+
+		} catch (Exception e) {
+			return "Tipo de Excessão: " + e.getClass().getSimpleName() + "\n *Mensagem: " + e.getMessage();
+		}
+
+		return null;
+	}
+
+	public int recuperarUsuario(int idProjeto) {
+		cfgDao = new ConfigDao();
+
+		int  idUsuario = -1;
+
+		
+
+		try {
+			String erro = cfgDao.conectaBD();
+			if (erro == null) {
+				conexao = cfgDao.getConexaoBD();
+				instrucaoSQL = "SELECT Usuario_idUsuario FROM `projeto` WHERE idProjeto = '" + idProjeto + "'";
+				comando = conexao.prepareStatement(instrucaoSQL);
+
+				registros = comando.executeQuery();
+				if (registros.next()) {
+					registros.beforeFirst();
+					while (registros.next()) {
+						idUsuario = Integer.parseInt(registros.getString("Usuario_idUsuario"));
+						
+						
+						
+
+					}
+				}
+				cfgDao.desconectaBD();
+
+			} else
+				idUsuario = -1;
+
+		} catch (Exception e) {
+			idUsuario = -1;
+		}
+		return idUsuario;
+	}
+
+	
 }

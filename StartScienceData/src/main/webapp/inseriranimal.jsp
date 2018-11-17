@@ -158,11 +158,7 @@
 					
 					<div class="form-row">
 						
-						<div class="col-md-4 mb-3">
-							<label for="validationCustom02">ID</label> <input
-								type="text" class="form-control" id="validationCustom02"
-								name="Idade"   required>
-						</div>
+						
 						<div class="col-md-4 mb-3">
 							<label for="validationCustom01">Especie</label> <input
 								type="text" class="form-control" id="validationCustom01"
@@ -175,11 +171,7 @@
 					
 					<div class="form-row">
 					
-					<div class="col-md-4 mb-3">
-							<label for="validationCustom02">Semanas</label> <input
-								type="text" class="form-control" id="validationCustom02"
-								name="Idade"   required>
-						</div>
+
 					
 						<div class="col-md-4 mb-3">
 							<label for="validationCustom02">Gênero</label> <input
@@ -189,22 +181,22 @@
 					</div>
 					
 					<div class="form-row">
-					
-						<div class="col-md-4 mb-3">
-							<label for="validationCustom02">Uso de drogas?</label> <input
-								type="text" class="form-control" id="validationCustom02"
-								name="Drogas"  required>
+
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="checkbox"
+								id="inlineCheckbox1" value="option1"> <label
+								class="form-check-label" for="inlineCheckbox1">Usa Drogras?</label>
 						</div>
-							<div class="col-md-4 mb-3">
-							<label for="validationCustom02">Exercicio Físico?</label> <input
-								type="text" class="form-control" id="validationCustom02"
-								name="Exercicio"  required>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="checkbox"
+								id="inlineCheckbox2" value="option2"> <label
+								class="form-check-label" for="inlineCheckbox2">Exercícios Físicos</label>
 						</div>
 					</div>
 					
 					
-				
-					
+					<br>
+					<br>
 					<button name="salvar" class="btn btn-primary" type="submit" value="salvar">Salvar</button>
 				</form>
 
