@@ -138,13 +138,7 @@
 				<!-- Page Content -->
 				<h1>Lista de Projetos</h1>
 				<hr>
-
-				<button class="btn btn-secondary" type="button" data-dismiss="modal">Listar
-					por Nome</button>
-				<button class="btn btn-secondary" type="button" data-dismiss="modal">Listar
-					por Ano</button>
-			
-
+		
 
 				
 				<div class="card mb-3">
@@ -206,7 +200,7 @@
 
 								<tbody>
 									<tr>
-										<td><%=p.getTitulo()%></td>
+										<td><strong><%=p.getTitulo()%></strong></td>
 										<td><%=p.getAno()%></td>
 										<td><%=p.getComite()%></td>
 										<td><%=uni%></td>

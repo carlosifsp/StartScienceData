@@ -8,12 +8,30 @@ public class Projeto {
 	private int nivel;
 	private int universidade;
 	private int IdUsuario;
-
+	private int idAnimal;
 	
 	
 	
 
 	
+	public int getIdAnimal() {
+		return idAnimal;
+	}
+
+
+
+
+
+
+	public void setIdAnimal(int idAnimal) {
+		this.idAnimal = idAnimal;
+	}
+
+
+
+
+
+
 	public int getIdUsuario() {
 		return IdUsuario;
 	}

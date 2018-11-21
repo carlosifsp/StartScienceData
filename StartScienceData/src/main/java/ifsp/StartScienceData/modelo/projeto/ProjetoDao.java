@@ -123,7 +123,17 @@ public class ProjetoDao {
 						String comite = registros.getString("Comite");
 						int nivel = Integer.parseInt(registros.getString("Nivel_idNivel"));
 						int universidade = Integer.parseInt(registros.getString("Universidade_idUniversidade"));
+						int usuario = Integer.parseInt(registros.getString("Usuario_idUsuario"));
 						int ativo = Integer.parseInt(registros.getString("ativo"));
+						
+						int idAnimal = -1;
+						try {
+							idAnimal = Integer.parseInt(registros.getString("Animais_idAnimais"));
+						}catch (Exception e) {
+							idAnimal = -1;
+						}
+						
+						
 						
 						if(ativo==1) {
 							projeto = new Projeto();
@@ -134,6 +144,8 @@ public class ProjetoDao {
 							projeto.setComite(comite);
 							projeto.setNivel(nivel);
 							projeto.setUniversidade(universidade);
+							projeto.setIdUsuario(usuario);
+							projeto.setIdAnimal(idAnimal);
 	
 	
 							projetos.add(projeto);
@@ -212,6 +224,33 @@ public class ProjetoDao {
 			idUsuario = -1;
 		}
 		return idUsuario;
+	}
+
+	public String atualizarProjeto(Projeto projetoParaEdit) {
+		cfgDao = new ConfigDao();
+
+		try {
+			String erro = cfgDao.conectaBD();
+
+			if (erro == null) {
+				conexao = cfgDao.getConexaoBD();
+
+				
+
+				instrucaoSQL = "";
+
+				comando = conexao.prepareStatement(instrucaoSQL);
+				comando.execute();
+				cfgDao.desconectaBD();
+
+			} else
+				return erro;
+
+		} catch (Exception e) {
+			return "Tipo de Excessão: " + e.getClass().getSimpleName() + "\n *Mensagem: " + e.getMessage();
+		}
+
+		return null;
 	}
 
 	

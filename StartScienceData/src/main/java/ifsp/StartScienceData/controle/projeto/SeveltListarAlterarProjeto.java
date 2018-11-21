@@ -18,7 +18,7 @@ import ifsp.StartScienceData.modelo.usuario.Usuario;
 import ifsp.StartScienceData.modelo.usuario.UsuarioDao;
 
 @WebServlet(urlPatterns = { "/alterar" })
-public class SeveltAlterarProjeto  extends HttpServlet{
+public class SeveltListarAlterarProjeto  extends HttpServlet{
 
 	/**
 	 * 

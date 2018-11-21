@@ -1,4 +1,5 @@
 
+<%@page import="ifsp.StartScienceData.modelo.animal.Animal"%>
 <%@page import="ifsp.StartScienceData.modelo.universidade.Universidade"%>
 <%@page import="java.util.ArrayList"
 	import="ifsp.StartScienceData.modelo.projeto.Projeto"
@@ -147,9 +148,11 @@
             <li class="breadcrumb-item">
               <a href="index.jsp">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Alterar Projetos</li>
+            <li class="breadcrumb-item active">Alterar Animais</li>
           </ol>
-
+			
+			
+			
 			<%
 			if (request.getAttribute("msg") != null) {
 
@@ -170,9 +173,7 @@
           <h1>Alteração de Projetos</h1>
           <hr>
           	
-          	<a id="butaoAddAnimal" type="button" href="listarAnimal"  class="btn btn-secondary" >Exibir Animais</a>
-    		<a id="butaoAddAnimal" type="button" href="inseriranimal.jsp"  class="btn btn-info" >Adicionar Animal</a>
-    		
+        	<a id="butaoAddAnimal" type="button" href="alterar?user=<%=user.getEmail()%>"  class="btn btn-info" >Voltar</a>
 			
 			<br>
 				<br>
@@ -180,7 +181,7 @@
 
 				<div class="card mb-3">
 					<div class="card-header">
-						<i class="fas fa-table"></i> Tabela de Animais
+						<i class="fas fa-table"></i> Tabela de Projetos
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
@@ -188,12 +189,12 @@
 								cellspacing="0">
 								<thead>
 									<tr>
-										<th>Título</th>
-										<th>Ano</th>
-										<th>Comitê</th>
-										<th>Instutição</th>
-										<th>Nível</th>
-										<th>Ações</th>
+										<th>Apelido</th>
+										<th>Espécie</th>
+										<th>Genero</th>
+										<th>Idade</th>
+										<th>Exercícios?</th>
+										<th>Drogras?</th>
 									</tr>
 
 								</thead>
@@ -201,91 +202,40 @@
 
 								<%
 	
-	ArrayList<Projeto> lista = (ArrayList<Projeto>) request.getAttribute("lista");
+	ArrayList<Animal> listaAnimal = (ArrayList<Animal>) request.getAttribute("listaAni");
+
+	if(listaAnimal!=null){
 	
-	if(lista!=null){
-		session.setAttribute("projetos", lista);
-		for (Projeto p : lista) {
+		for (Animal a : listaAnimal) {
 			
 	
-			String nivel = "";
-			switch(p.getNivel()){
-			case 1:
-				nivel = "Iniciação Cientifica";
-				break;
-			case 2:
-				nivel = "Mestrado";
-				break;
-			case 3:
-				nivel = "Doutorado";
-				break;
-			case 4:
-				nivel = "Pós-Doutorado";
-				break;
-			}
-			
-			String uni = "";
-			ArrayList<Universidade> listaUni = (ArrayList<Universidade>) request.getAttribute("listaUni");
-			
-			if(listaUni!=null){
-				for (Universidade u : listaUni) {
-					if(u.getIdUniversidade()==p.getUniversidade()){
-						uni =  u.getNomeUniversidade();
-					}
+				String genero = "Macho";
+				if(a.getGenero()==2){
+					genero = "Femea";
 				}
-			}
-%>
+				
+				String ex = "Não";
+				if(a.getExercicios()==1){
+					 ex = "Sim";
+				}
+				
+				
+				String drogras = "Não";
+				if(a.getDrogras()==1){
+					drogras = "Sim";
+				}
+				
+				%>
 
 
 								<tbody>
 									<tr>
-										<td><a class="btn btn-primary" data-toggle="modal" data-target="#modal<%=p.getId()%>"><%=p.getTitulo() %></a></td>
-										<td><%=p.getAno() %></td>
-										<td><%=p.getComite() %></td>
-										<td><%=uni %></td>
-										<td><%=nivel %></td>
-										<td>
-											<a type="button" onClick="return confirmaExclusao(<%=p.getId()%>);"  class="btn btn-danger">Apagar</a> 
-											<a type="button" class="btn btn-warning" href="salvarEdicao?idProjeto=<%=p.getId()%>">Editar</a>
-
-										</td>
-<!-- Modal -->
-			<div class="modal fade" id="modal<%=p.getId()%>" tabindex="-1"
-				role="dialog" aria-labelledby="exampleModalLongTitle"
-				aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLongTitle">Detalhes do Projeto</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<%
-						String animal = "Não";
-						if(p.getIdAnimal()>0){
-							animal = "Sim";
-						}
-						
-						%>
-						<div class="modal-body">
-							<strong>Usuario: </strong> <%=user.getNome() %><br>
-							<strong>Titolo Do Projeto: </strong> <%=p.getTitulo() %><br>
-							<strong>Comitê: </strong> <%=p.getComite()%><br>
-							<strong>Ano: </strong> <%=p.getAno() %><br>
-							<strong>Nível: </strong> <%=nivel%><br>
-							<strong>Universidade: </strong> <%=uni%><br>
-							<strong>Animal em Análise ?: </strong> <%=animal%><br>
-						
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Close</button>
-						</div>
-					</div>
-				</div>
-			</div>										
+										<td><a style="font-size: 18px"><strong><%=a.getApelido() %></strong></a></td>
+										<td><%=a.getEspecie() %></td>
+										<td><%=genero %></td>
+										<td><%=a.getIdade() %></td>
+										<td><%=ex %></td>
+										<td><%=drogras %></td>				
 									</tr>
 									
 

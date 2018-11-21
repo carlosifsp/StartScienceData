@@ -1,3 +1,5 @@
+<%@page import="ifsp.StartScienceData.modelo.animal.Animal"%>
+<%@page import="java.nio.channels.SeekableByteChannel"%>
 <%@page import="ifsp.StartScienceData.modelo.universidade.Universidade"%>
 <%@page import="java.util.ArrayList"
 	import="ifsp.StartScienceData.modelo.projeto.Projeto"
@@ -138,49 +140,80 @@
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.jsp">Dashboard</a>
 					</li>
-					<li class="breadcrumb-item active">Cadastrar Projeto</li>
+					<li class="breadcrumb-item active">Edição de Projeto Projeto</li>
 				</ol>
 				<%
-					if (request.getAttribute("mensagemCadastro") != null) {
+					if (request.getAttribute("mensagemAlteracao") != null) {
 
-						int msg = (Integer) request.getAttribute("mensagemCadastro");
+						int msg = (Integer) request.getAttribute("mensagemAlteracao");
 						
-						if(msg==1){
+						if(msg!=1){
 				%>
 
-				<div class="alert alert-success" role="alert">
-					<strong>Status: Cadastrado Com Sucesso </strong>
+				<div class="alert alert-warning" role="alert">
+					<strong>Status: Edição não efetuada, Revise os dados! </strong>
 				</div>
 
 
 				<%
-					}else{
+					}
+				}
+				%>
+
+				<%
+				
+				if(request.getAttribute("IdEdit") != null){
+					
+					String idParaAlteracaot = (String) request.getAttribute("IdEdit");
+					
+					int idParaAlteracao = Integer.parseInt(idParaAlteracaot);
+					
+					
+					Projeto projetoParaedicao = null;
+					
+					
+					
+					
+					//preparando projeto que será editado!
+					if(session.getAttribute("projetos")!=null){
+						ArrayList<Projeto> listaProjeto = (ArrayList<Projeto>) session.getAttribute("projetos");
+						
+						for (Projeto p : listaProjeto) {
+							if(p.getId()==idParaAlteracao){
+								projetoParaedicao = p;
+								break;
+							}	
+						}	
+					}
+					//fim da preparação
+					
+					
+				if(projetoParaedicao!=null){
+					
+					
+					
+					
 				
 				%>
-				<div class="alert alert-warning" role="alert">
-					<strong>Status: Não foi possivel Cadastrar! </strong>
-				</div>
-				<%
-					}
-					}
-			
-				%>
 
-				<!-- Page Content -->
-				<h1>Cadastro de Projetos</h1>
+				<h1>Edição de Projetos</h1>
 				<hr>
 
-				<form class="needs-validation" action="cadastro" method="post" novalidate>
+				<form class="needs-validation" action="salvarEdicao" method="post" novalidate>
 					
 					<input type="hidden" class="form-control" id="validationCustom01"
-								name="emailUsuario" value="<%=user.getEmail()%>">
+								name="idProjeto" value="<%=projetoParaedicao.getId() %>" >
+								
+					<input type="hidden" class="form-control" id="validationCustom01"
+								name="user" value="<%=user.getEmail() %>" >			
 					
+						
 					<div class="form-row">
 					
 						<div class="col-md-8 mb-3">
 							<label for="validationCustom01">Título do Projeto</label> <input
 								type="text" class="form-control" id="validationCustom01"
-								name="titulo"  required>
+								name="titulo" value="<%=projetoParaedicao.getTitulo()%>" required>
 						</div>
 						
 					</div>
@@ -190,12 +223,12 @@
 						<div class="col-md-4 mb-3">
 							<label for="validationCustom02">Ano</label> <input
 								type="number" class="form-control" id="validationCustom02"
-								name="ano"   required>
+								name="ano" value="<%=projetoParaedicao.getAno() %>"  required>
 						</div>
 						<div class="col-md-4 mb-3">
 							<label for="validationCustom02">Comitê de Ética</label> <input
 								type="text" class="form-control" id="validationCustom02"
-								name="comite" maxlength="5" required>
+								name="comite" value="<%=projetoParaedicao.getComite() %>" maxlength="5" required>
 						</div>
 					</div>
 					
@@ -203,10 +236,30 @@
 					
 					<div class="form-row">
 					
-						<div class="col-md-4 mb-3">
+						<%
+						String nivel = "";
+						switch(projetoParaedicao.getNivel()){
+						case 1:
+							nivel = "Iniciação Cientifica";
+							break;
+						case 2:
+							nivel = "Mestrado";
+							break;
+						case 3:
+							nivel = "Doutorado";
+							break;
+						case 4:
+							nivel = "Pós-Doutorado";
+							break;
+						}
+						
+						%>
+					
+						<div class="col-md-6 mb-3">
 							<label for="validationCustom01">Nível</label>
 								<select name="nivel" class="form-control">
-									<option value="1">Iniciação Científica</option>
+									<option value="<%=projetoParaedicao.getNivel()%>"><%=nivel%> </option>
+									<option value="1">Iniciação Cientifica</option>
 									<option value="2">Mestrado</option>
 									<option value="3">Doutorado</option>
 									<option value="4">Pós-Doutorado</option>
@@ -217,14 +270,40 @@
 							<label for="validationCustom02">Universidade</label> 
 							<select name="universidade" class="form-control">
 							<%
-							ArrayList<Universidade> lista = (ArrayList<Universidade>) request.getAttribute("lista");
+							ArrayList<Universidade> listaUni = (ArrayList<Universidade>) request.getAttribute("listaUni");
 
-							if(lista!=null){
-								for (Universidade u : lista) {
-							%>
+									if(listaUni!=null){
+										for (Universidade u : listaUni) {
+											if(u.getIdUniversidade()==projetoParaedicao.getUniversidade()){
+											%>
+												<option value="<%=u.getIdUniversidade()%>" selected="selected"> <%=u.getNomeUniversidade()%></option>
+											<%continue;} %>
+			
+											<option value="<%=u.getIdUniversidade()%>"><%=u.getNomeUniversidade()%></option>
+										
+									<% } } %>		
+						</select>	
+						
+						</div>
+						
+					
+						
+						<div class="col-md-4 mb-3">
+							<label for="validationCustom02">Animal</label> 
+							<select name="animal" class="form-control">
+							<%
+							ArrayList<Animal> listaAni = (ArrayList<Animal>) request.getAttribute("listaAni");
+
+							if(listaAni!=null){
+								for (Animal a : listaAni) {
+									
+							if(a.getId()==projetoParaedicao.getIdAnimal()){
+											%>
+												<option value="<%=a.getId()%>" selected="selected"> <%=a.getApelido()%></option>
+											<%continue;} %>
 							
 							
-									<option value="<%=u.getIdUniversidade()%>"><%=u.getNomeUniversidade()%></option>
+									<option value="<%=a.getId() %>" ><%=a.getApelido() %></option>
 									
 								
 								
@@ -233,14 +312,24 @@
 						</div>
 						
 					</div>
+						
+						<button name="salvar" class="btn btn-primary" type="submit" value="salvar"> Salvar</button>
+					</div>
 					
 				
 					
-					<button name="salvar" class="btn btn-primary" type="submit" value="salvar">Salvar</button>
+
 				</form>
 
 
 			</div>
+			
+			
+			<%	
+					}
+			}
+				
+			%>
 			<!-- /.container-fluid -->
 
 			<!-- Sticky Footer -->
@@ -296,7 +385,8 @@
 
 	<!-- Custom scripts for all pages-->
 	<script src="js/sb-admin.min.js"></script>
-	<%}else{
+	<%}
+	else{
   	  response.sendRedirect("login");
     }
 	

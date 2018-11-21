@@ -35,26 +35,12 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin.css" rel="stylesheet">
 
+ <link href="estilo.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
-		<!-- inicio do Aviso de Cadastro!-->
-	<%
-		if (request.getAttribute("mensagemCadastro") != null) {
 
-			String msg = (String) request.getAttribute("mensagemCadastro");
-	%>
-	
-	<div class="alert alert-success" role="alert">
-		<strong>Status: </strong> <%=msg%>
-	</div>
-
-
-	<%
-		}
-	%>
-	
-	<!-- Fim do Aviso de Cadastro!-->
 
 	<% 
   	if(session.getAttribute("UserLogado")!=null){
@@ -104,9 +90,7 @@
 					<a class="dropdown-item" href="#" data-toggle="modal"
 						data-target="#logoutModal">Logout</a>
 				</div>
-			<%}else{
-        	  response.sendRedirect("login");
-          }
+			<%
        	
        	%>	
 			</li>
@@ -153,8 +137,50 @@
 				<!-- Page Content -->
 				<h1>Cadastro de Animais</h1>
 				<hr>
+				<%
+					if (request.getAttribute("mensagemCadastro") != null) {
 
-				<form class="needs-validation" action="cadastro" method="post" novalidate>
+						int msg = (Integer) request.getAttribute("mensagemCadastro");
+						
+						if(msg==1){
+				%>
+
+				<div class="alert alert-success" role="alert">
+					<strong>Status: Cadastrado Com Sucesso </strong>
+				</div>
+
+
+				<%
+					}else{
+				
+				%>
+				<div class="alert alert-warning" role="alert">
+					<strong>Status: Não foi possivel Cadastrar! </strong>
+				</div>
+				<%
+					}
+					}
+			
+				%>
+				
+				<a id="butaoAddAnimal" type="button" href="alterar?user=<%=user.getEmail()%>"  class="btn btn-info" >Voltar</a>
+				<br>
+				<br>
+				<form class="needs-validation" action="inserirAnimal" method="post">
+					
+					
+					<div class="form-row">
+						
+						
+						<div class="col-md-4 mb-3">
+							<label for="validationCustom01">Apelido</label> <input
+								type="text" class="form-control" id="validationCustom01"
+								name="apelido"  required>
+						</div>
+						
+						
+						
+					</div>
 					
 					<div class="form-row">
 						
@@ -162,34 +188,35 @@
 						<div class="col-md-4 mb-3">
 							<label for="validationCustom01">Especie</label> <input
 								type="text" class="form-control" id="validationCustom01"
-								name="Especie"  required>
+								name="especie"  required>
 						</div>
 						
-						
-						
-					</div>
-					
-					<div class="form-row">
-					
-
-					
 						<div class="col-md-4 mb-3">
-							<label for="validationCustom02">Gênero</label> <input
-								type="text" class="form-control" id="validationCustom02"
-								name="Genero"  required>
+							<label for="validationCustom01">Idade</label> <input
+								type="number" class="form-control" id="validationCustom01"
+								name="idade"  required>
 						</div>
+						
+						
 					</div>
+					
+					<div class="form-group">
+                                <label for="exampleFormControlInput1">Genero</label><br>
+                                <input type="radio" name="genero" value="1" checked="checked">Macho</input>
+                                
+                                <input type="radio" name="genero" value="2">Femea</input>
+                        </div>
 					
 					<div class="form-row">
 
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="checkbox"
-								id="inlineCheckbox1" value="option1"> <label
+								id="inlineCheckbox1" name="drogras"> <label
 								class="form-check-label" for="inlineCheckbox1">Usa Drogras?</label>
 						</div>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="checkbox"
-								id="inlineCheckbox2" value="option2"> <label
+								id="inlineCheckbox2" name="exercicios" > <label
 								class="form-check-label" for="inlineCheckbox2">Exercícios Físicos</label>
 						</div>
 					</div>
@@ -242,7 +269,7 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" href="login.jsp">Logout</a>
+					<a class="btn btn-primary" href="login">Logout</a>
 				</div>
 			</div>
 		</div>
@@ -257,6 +284,12 @@
 
 	<!-- Custom scripts for all pages-->
 	<script src="js/sb-admin.min.js"></script>
+
+<%}else{
+  	  response.sendRedirect("login");
+    }
+	
+	%>
 
 </body>
 
