@@ -141,7 +141,30 @@
       <div id="content-wrapper">
 
         <div class="container-fluid">
+	
+			<%
+			if (request.getAttribute("msgEdit") != null) {
 
+				int msg = (Integer) request.getAttribute("msgEdit");
+			
+			
+			
+			
+			String alerta = "";
+			if(msg==1){
+				alerta = "Projeto Alterado com sucesso!";
+			
+			%>
+	
+			<div class="alert alert-success" role="alert">
+		 	<%=alerta%>
+			</div>
+
+	
+		<%}
+		}
+		%>	
+		
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -150,22 +173,9 @@
             <li class="breadcrumb-item active">Alterar Projetos</li>
           </ol>
 
-			<%
-			if (request.getAttribute("msg") != null) {
+		
 
-			String msg = (String) request.getAttribute("msg");
-			%>
-	
-			<div class="alert alert-success" role="alert">
-		 	<%=msg%>
-			</div>
-
-	
-		<%
-		}
-		%>	
-
-
+			<br>
           <!-- Page Content -->
           <h1>Alteração de Projetos</h1>
           <hr>
@@ -191,7 +201,6 @@
 										<th>Título</th>
 										<th>Ano</th>
 										<th>Comitê</th>
-										<th>Instutição</th>
 										<th>Nível</th>
 										<th>Ações</th>
 									</tr>
@@ -242,12 +251,10 @@
 										<td><a class="btn btn-primary" data-toggle="modal" data-target="#modal<%=p.getId()%>"><%=p.getTitulo() %></a></td>
 										<td><%=p.getAno() %></td>
 										<td><%=p.getComite() %></td>
-										<td><%=uni %></td>
 										<td><%=nivel %></td>
 										<td>
-											<a type="button" onClick="return confirmaExclusao(<%=p.getId()%>);"  class="btn btn-danger">Apagar</a> 
+											<a type="button" onClick="return confirmaExclusao(<%=p.getId()%>);"  class="btn btn-danger">Apagar</a>
 											<a type="button" class="btn btn-warning" href="salvarEdicao?idProjeto=<%=p.getId()%>">Editar</a>
-
 										</td>
 <!-- Modal -->
 			<div class="modal fade" id="modal<%=p.getId()%>" tabindex="-1"

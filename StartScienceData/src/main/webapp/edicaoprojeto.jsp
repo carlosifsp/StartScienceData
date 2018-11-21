@@ -37,6 +37,8 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin.css" rel="stylesheet">
 
+  <link href="estilo.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -142,6 +144,7 @@
 					</li>
 					<li class="breadcrumb-item active">Edição de Projeto Projeto</li>
 				</ol>
+				
 				<%
 					if (request.getAttribute("mensagemAlteracao") != null) {
 
@@ -198,7 +201,10 @@
 
 				<h1>Edição de Projetos</h1>
 				<hr>
-
+				<a id="butaoAddAnimal" type="button" href="alterar?user=<%=user.getEmail()%>"  class="btn btn-info" >Voltar</a>
+				<br>
+				
+				
 				<form class="needs-validation" action="salvarEdicao" method="post" novalidate>
 					
 					<input type="hidden" class="form-control" id="validationCustom01"

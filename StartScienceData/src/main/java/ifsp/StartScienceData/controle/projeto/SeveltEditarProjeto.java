@@ -37,7 +37,7 @@ public class SeveltEditarProjeto extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		@SuppressWarnings("unused")
+
 		RequestDispatcher dispatcher = null;
 		
 		
@@ -84,7 +84,7 @@ public class SeveltEditarProjeto extends HttpServlet{
 			
 			req.setAttribute("lista", listaEdit);
 			req.setAttribute("listaUni", listaUni);
-			req.setAttribute("msg", msg);
+			req.setAttribute("msgEdit", msg);
 		}else {
 			dispatcher = req.getRequestDispatcher("edicaoprojeto.jsp");
 			int msg = 0;
@@ -93,6 +93,7 @@ public class SeveltEditarProjeto extends HttpServlet{
 			req.setAttribute("listaUni", listaUni);
 			req.setAttribute("listaAni", listaAninmais);
 		}
+		
 		dispatcher.forward(req, resp);
 		resp.setCharacterEncoding("UTF-8");
 	}

@@ -50,7 +50,9 @@ public class EdicaoUsuario extends HttpServlet{
 		String erro = userDao.atualizaUsuario(userEdit);
 		
 		if(erro==null) {
+			req.setAttribute("msg", 1);
 			dispatcher = req.getRequestDispatcher("index.jsp");
+		
 		}else {
 			dispatcher = req.getRequestDispatcher("painel.jsp?user=" + userEdit.getEmail());
 		}

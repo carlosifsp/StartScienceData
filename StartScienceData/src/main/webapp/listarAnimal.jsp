@@ -34,21 +34,7 @@
     
     <link href="estilo.css" rel="stylesheet">
     
-    <script>
-	function confirmaExclusao(codigo) {   
-  		
-   		
-   		var url = "alterarExcluir?id=" + codigo;
-    
-	    if (confirm("Tem certeza que deseja excluir o projeto?")) { 
-	    	location.href=url;
-	    }
-  
-   
-   
-   }
 
-</script>
 
   </head>
 
@@ -148,7 +134,7 @@
             <li class="breadcrumb-item">
               <a href="index.jsp">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Alterar Animais</li>
+            <li class="breadcrumb-item active">listagem de Animais</li>
           </ol>
 			
 			
@@ -170,7 +156,7 @@
 
 
           <!-- Page Content -->
-          <h1>Alteração de Projetos</h1>
+          <h1>Lista de Animais</h1>
           <hr>
           	
         	<a id="butaoAddAnimal" type="button" href="alterar?user=<%=user.getEmail()%>"  class="btn btn-info" >Voltar</a>
@@ -181,7 +167,7 @@
 
 				<div class="card mb-3">
 					<div class="card-header">
-						<i class="fas fa-table"></i> Tabela de Projetos
+						<i class="fas fa-table"></i> Tabela de Animais
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">

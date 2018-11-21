@@ -234,10 +234,15 @@ public class ProjetoDao {
 
 			if (erro == null) {
 				conexao = cfgDao.getConexaoBD();
-
+					
 				
-
-				instrucaoSQL = "";
+				
+				String part1 = "UPDATE projeto SET Titulo = '" + projetoParaEdit.getTitulo() +"', Comite = '" + projetoParaEdit.getComite() + "', ";
+				String part2 = "Ano = '" + projetoParaEdit.getAno() + "', Universidade_idUniversidade = '" + projetoParaEdit.getUniversidade() + "', ";
+				String part3 = "Animais_idAnimais = '" + projetoParaEdit.getIdAnimal() + "', Nivel_idNivel = '" + projetoParaEdit.getNivel() + "' ";
+				String part4 = "WHERE projeto.idProjeto = '" + projetoParaEdit.getId() + "' ";
+				
+				instrucaoSQL = part1 + part2 + part3 + part4;
 
 				comando = conexao.prepareStatement(instrucaoSQL);
 				comando.execute();

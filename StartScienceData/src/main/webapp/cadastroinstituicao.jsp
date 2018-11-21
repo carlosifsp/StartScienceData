@@ -29,6 +29,8 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
+    
+    <link href="estilo.css" rel="stylesheet">
 
   </head>
 
@@ -151,11 +153,16 @@
             <li class="breadcrumb-item">
               <a href="index.jsp">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Cadastrar Instituição</li>
+            <li class="breadcrumb-item active">Cadastrar Instituição</li> 
+            
           </ol>
 
           <!-- Page Content -->
-          <h1>Cadastro de Instituições</h1>
+          <h1>Cadastro de Instituições</h1> 
+          
+            <a id="butaoAddAnimal" type="button" href="instituicao"  class="btn btn-info" >Voltar</a>
+                <br>
+                <br>   
           <hr>
           <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" method="post" action="cadastroUni">
           
@@ -163,7 +170,7 @@
           <input type="text" name="Nome" class="form-control" placeholder="Nome da Instituição" aria-label="Search" aria-describedby="basic-addon2">
           
 
-                      
+                 
           
         
         	<button class="btn btn-primary" type="submit" data-dismiss="modal">Cadastrar</button>

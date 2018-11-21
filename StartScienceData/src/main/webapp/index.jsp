@@ -134,6 +134,23 @@
 
       <div id="content-wrapper">
 		
+		<%
+					if (request.getAttribute("msg") != null) {
+
+						int msg = (Integer) request.getAttribute("msg");
+						
+						if(msg==1){
+				%>
+
+				<div class="alert alert-success" role="alert">
+					<strong>Status: Dados de Usuario Alterado Com Sucesso! </strong>
+				</div>
+
+
+				<%
+					}
+				}
+				%>
 		
 		
 		<div id="tituloProjeto">
