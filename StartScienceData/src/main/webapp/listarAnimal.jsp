@@ -180,7 +180,7 @@
 										<th>Genero</th>
 										<th>Idade</th>
 										<th>Exercícios?</th>
-										<th>Drogras?</th>
+										<th>Drogas?</th>
 									</tr>
 
 								</thead>

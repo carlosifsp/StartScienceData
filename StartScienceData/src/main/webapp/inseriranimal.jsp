@@ -212,7 +212,7 @@
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="checkbox"
 								id="inlineCheckbox1" name="drogras"> <label
-								class="form-check-label" for="inlineCheckbox1">Usa Drogras?</label>
+								class="form-check-label" for="inlineCheckbox1">Usa Drogas?</label>
 						</div>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="checkbox"

@@ -6,7 +6,7 @@ public class ConfigDao {
     private Connection conexao; 
 
     public String conectaBD() { 
-        String strCon = "jdbc:mysql://localhost/mydb?user=root&password=123456&useTimezone=true&serverTimezone=UTC&useSSL=false";
+        String strCon = "jdbc:mysql://localhost/mydb?user=root&password=&useTimezone=true&serverTimezone=UTC&useSSL=false";
         try {
             Class.forName("com.mysql.jdbc.Driver"); 
             conexao = DriverManager.getConnection(strCon); 
