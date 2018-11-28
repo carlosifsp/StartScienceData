@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 21-Nov-2018 às 20:33
+-- Generation Time: 28-Nov-2018 às 17:37
 -- Versão do servidor: 10.1.36-MariaDB
 -- versão do PHP: 7.2.11
 
@@ -43,6 +43,14 @@ CREATE TABLE `animais` (
   `Exame_Sangue_idExame_Sangue` int(11) DEFAULT NULL,
   `Biologia_Molecular_idBiologia_Molecular` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `animais`
+--
+
+INSERT INTO `animais` (`idAnimais`, `apelido`, `Especie`, `Idade`, `Genero`, `Drogas`, `Exercicio`, `VO2max_idVO2max`, `Histologia_idHistologia`, `Hemodinamica_idHemodinamica`, `Pesos_idPesos`, `Exame_Sangue_idExame_Sangue`, `Biologia_Molecular_idBiologia_Molecular`) VALUES
+(10, 'Cobaia 256', 'micromys minutus', 18, 2, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 'Cobaia 321', 'zibelina', 2, 2, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -121,6 +129,16 @@ CREATE TABLE `nivel` (
   `Nivel` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `nivel`
+--
+
+INSERT INTO `nivel` (`idNivel`, `Nivel`) VALUES
+(1, 'Iniciação Cientifica'),
+(2, 'Mestrado'),
+(3, 'Doutorado'),
+(4, 'Pós-Doutorado');
+
 -- --------------------------------------------------------
 
 --
@@ -153,6 +171,13 @@ CREATE TABLE `projeto` (
   `ativo` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `projeto`
+--
+
+INSERT INTO `projeto` (`idProjeto`, `Titulo`, `Comite`, `Ano`, `Universidade_idUniversidade`, `Animais_idAnimais`, `Usuario_idUsuario`, `Nivel_idNivel`, `ativo`) VALUES
+(12, 'Estudo Cardiográfico de Rato', 'EDa11', '2018', 7, 11, 4, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -163,6 +188,24 @@ CREATE TABLE `universidade` (
   `idUniversidade` int(11) NOT NULL,
   `Nome` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `universidade`
+--
+
+INSERT INTO `universidade` (`idUniversidade`, `Nome`) VALUES
+(1, 'Instituto Federal de São Paulo'),
+(2, 'Universidade Federal de São Paulo '),
+(3, 'Universidade de Brasília'),
+(4, 'Universidade Federal da Grande Dourados'),
+(5, 'Universidade Federal de Goiás'),
+(6, 'Universidade Federal de Mato Grosso'),
+(7, 'Universidade Federal de Mato Grosso do Sul'),
+(8, 'Universidade Federal de Catalão'),
+(9, 'Universidade Federal de Minas Gerais'),
+(10, 'Universidade Federal do ABC'),
+(11, 'Instituto Federal Norte de Minas Gerais'),
+(12, 'Universidade Federal de Jataí');
 
 -- --------------------------------------------------------
 
@@ -187,7 +230,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idUsuario`, `Nome`, `Sobrenome`, `Email`, `Senha`, `DataNascimento`, `CPF`, `Universidade_idUniversidade`, `Nivel_idNivel`) VALUES
-(4, 'Carlos Mario', 'Oliveira Novais', 'oliveiracarlosmario1@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '1999-03-20', '12803778602', 1, 2);
+(4, 'Carlos Mario', 'Oliveira Novais', 'oliveiracarlosmario1@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '1999-03-20', '12803778602', 10, 1);
 
 -- --------------------------------------------------------
 
@@ -310,7 +353,7 @@ ALTER TABLE `vo2max`
 -- AUTO_INCREMENT for table `animais`
 --
 ALTER TABLE `animais`
-  MODIFY `idAnimais` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAnimais` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `biologia_molecular`
@@ -340,7 +383,7 @@ ALTER TABLE `histologia`
 -- AUTO_INCREMENT for table `nivel`
 --
 ALTER TABLE `nivel`
-  MODIFY `idNivel` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idNivel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pesos`
@@ -352,13 +395,13 @@ ALTER TABLE `pesos`
 -- AUTO_INCREMENT for table `projeto`
 --
 ALTER TABLE `projeto`
-  MODIFY `idProjeto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProjeto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `universidade`
 --
 ALTER TABLE `universidade`
-  MODIFY `idUniversidade` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUniversidade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `usuario`
