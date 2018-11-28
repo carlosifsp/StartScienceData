@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ifsp.StartScienceData.modelo.animal.Animal;
+import ifsp.StartScienceData.modelo.animal.AnimalDao;
 import ifsp.StartScienceData.modelo.projeto.Projeto;
 import ifsp.StartScienceData.modelo.projeto.ProjetoDao;
 import ifsp.StartScienceData.modelo.universidade.Universidade;
@@ -44,8 +46,15 @@ public class SeveltListarAlterarProjeto  extends HttpServlet{
 		UniversidadeDao dadosform = new UniversidadeDao();
 		
 		ArrayList<Universidade> listaUni = dadosform.consultaUniversidade();
+		
+		AnimalDao dadosAni = new AnimalDao();
+		
+		ArrayList<Animal> listAnimal = dadosAni.consultaAnimal();
+		
+		
+		
+		req.setAttribute("listaAnimal", listAnimal);
 		req.setAttribute("listaUni", listaUni);
-
 		req.setAttribute("lista", listaEdit);
 
 		dispatcher.forward(req, resp);

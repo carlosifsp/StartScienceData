@@ -1,4 +1,5 @@
 
+<%@page import="ifsp.StartScienceData.modelo.animal.Animal"%>
 <%@page import="ifsp.StartScienceData.modelo.universidade.Universidade"%>
 <%@page import="java.util.ArrayList"
 	import="ifsp.StartScienceData.modelo.projeto.Projeto"
@@ -237,6 +238,8 @@
 			ArrayList<Universidade> listaUni = (ArrayList<Universidade>) request.getAttribute("listaUni");
 			
 			if(listaUni!=null){
+				session.setAttribute("listaUni", listaUni);
+				
 				for (Universidade u : listaUni) {
 					if(u.getIdUniversidade()==p.getUniversidade()){
 						uni =  u.getNomeUniversidade();
@@ -270,6 +273,14 @@
 							</button>
 						</div>
 						<%
+						
+						if(request.getAttribute("listaAnimal")!=null){
+							ArrayList<Animal> listaAnimal = (ArrayList<Animal>) request.getAttribute("listaAnimal");
+							session.setAttribute("listaAnimal", listaAnimal);
+						}
+						
+						
+						
 						String animal = "Não";
 						if(p.getIdAnimal()>0){
 							animal = "Sim";
@@ -289,6 +300,8 @@
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
 								data-dismiss="modal">Close</button>
+								
+							<a id="butaoExportar" class="btn btn-info" href="exporte.jsp?idProjeto=<%=p.getId() %>">Exportar</a>	
 						</div>
 					</div>
 				</div>
