@@ -82,7 +82,7 @@ public class SeveltCadastroProjeto extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher dispatcher = req.getRequestDispatcher("cadastroprojeto.jsp");
 		
-	
+		lista = dadosform.consultaUniversidade();
 		
 		req.setAttribute("lista", lista);
 		dispatcher.forward(req, resp);
