@@ -16,7 +16,7 @@
     <meta name="Science Data" content="">
     <meta name="Brunno Lemes" name="Carlos Mario" name="Mateus Roncon" content="">
 
-    <title>StartScienceDate</title>
+    <title>StartScienceData</title>
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,6 +31,7 @@
     <link href="css/sb-admin.css" rel="stylesheet">
     
      <link href="estilo22.css" rel="stylesheet">
+     <link rel="icon" type="imagem/png" href=""src/main/webapp/imagens/icone.png"" />
 
   </head>
 
